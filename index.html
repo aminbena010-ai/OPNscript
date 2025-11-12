@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación OPN - Lenguaje de Programación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- SIDEBAR NAVIGATION -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    <span>OPN Docs</span>
+                </div>
+                <button id="theme-toggle" class="theme-btn" title="Cambiar tema">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="search-bar" class="search-input" placeholder="🔍 Buscar...">
+                <div id="search-results" class="search-results"></div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3 class="nav-title">Inicio</h3>
+                    <ul>
+                        <li><a href="#inicio" class="nav-link active" data-section="inicio">🏠 Inicio</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-title">Aprender</h3>
+                    <ul>
+                        <li><a href="#getting-started" class="nav-link" data-section="getting-started">🚀 Primeros Pasos</a></li>
+                        <li><a href="#installation" class="nav-link" data-section="installation">⚙️ Instalación</a></li>
+                        <li><a href="#language-ref" class="nav-link" data-section="language-ref">📚 Referencia del Lenguaje</a></li>
+                        <li><a href="#syntax" class="nav-link" data-section="syntax">✏️ Sintaxis</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-title">Gráficos</h3>
+                    <ul>
+                        <li><a href="#gfx-api" class="nav-link" data-section="gfx-api">🎨 API de Gráficos</a></li>
+                        <li><a href="#gfx-colors" class="nav-link" data-section="gfx-colors">🎭 Colores</a></li>
+                        <li><a href="#gfx-examples" class="nav-link" data-section="gfx-examples">📸 Ejemplos</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-title">Herramientas</h3>
+                    <ul>
+                        <li><a href="#editor" class="nav-link" data-section="editor">💻 Editor OPN</a></li>
+                        <li><a href="#repl" class="nav-link" data-section="repl">⌨️ REPL</a></li>
+                        <li><a href="#file-types" class="nav-link" data-section="file-types">📄 Tipos de Archivos</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-title">Referencia</h3>
+                    <ul>
+                        <li><a href="#variables" class="nav-link" data-section="variables">📝 Variables</a></li>
+                        <li><a href="#stdlib" class="nav-link" data-section="stdlib">📦 Librería Estándar</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>v1.0.0 • Documentación Completa</p>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main id="main-content" class="main-content">
+            <!-- INICIO -->
+            <section id="inicio" class="content-section active">
+                <div class="hero-section">
+                    <h1>🎯 Bienvenido a OPN</h1>
+                    <p class="subtitle">Lenguaje de programación moderno con API de gráficos integrada</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Fácil de Aprender</h3>
+                        <p>Sintaxis limpia e intuitiva, perfecta para principiantes y expertos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Gráficos Integrados</h3>
+                        <p>API moderna para crear gráficos sin dependencias externas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Rápido</h3>
+                        <p>Compilación eficiente y ejecución rápida en Python.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>Bien Documentado</h3>
+                        <p>Documentación completa con ejemplos y tutoriales.</p>
+                    </div>
+                </div>
+
+                <div class="quick-start-box">
+                    <h2>Inicio Rápido</h2>
+                    <div class="code-block">
+                        <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("¡Hola, OPN!");<br>
+}
+                        </code>
+                    </div>
+                    <p>Selecciona una sección del menú para comenzar a aprender OPN.</p>
+                </div>
+            </section>
+
+            <!-- GETTING STARTED -->
+            <section id="getting-started" class="content-section">
+                <h1>🚀 Primeros Pasos con OPN</h1>
+                
+                <h2>Tu Primer Programa - Hola Mundo</h2>
+                <p>Crea un archivo llamado <code>hola.opn</code>:</p>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("¡Hola, Mundo!");<br>
+}
+                    </code>
+                </div>
+
+                <p><strong>Ejecuta el programa:</strong></p>
+                <div class="code-block">
+                    <code>cd OPN4/prisma-lang/src<br>
+python -m prisma run hola.opn</code>
+                </div>
+
+                <p><strong>Salida esperada:</strong></p>
+                <div class="code-block">
+                    <code>¡Hola, Mundo!</code>
+                </div>
+
+                <h3>Explicación</h3>
+                <ul>
+                    <li><code>main { }</code>: Bloque principal del programa (punto de entrada)</li>
+                    <li><code>py.print()</code>: Función para imprimir en consola</li>
+                    <li><code>;</code>: Cada instrucción termina con punto y coma</li>
+                </ul>
+
+                <h2>Conceptos Básicos</h2>
+
+                <h3>📝 Variables</h3>
+                <p><strong>Reglas:</strong></p>
+                <ul>
+                    <li><code>let</code> para declarar una variable</li>
+                    <li><code>set</code> para modificar una variable existente</li>
+                    <li>Los nombres son case-sensitive</li>
+                </ul>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let nombre = "Ana";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let edad = 25;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("Nombre:", nombre);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("Edad:", edad);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;set edad = 26;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("Nueva edad:", edad);<br>
+}
+                    </code>
+                </div>
+
+                <h3>🔢 Operaciones Matemáticas</h3>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let a = 10;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let b = 5;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("Suma:", a + b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("Resta:", a - b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("Multiplicación:", a * b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("División:", a / b);<br>
+}
+                    </code>
+                </div>
+
+                <h3>❓ Condicionales</h3>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let edad = 18;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if edad >= 18 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;py.print("Eres mayor de edad");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;py.print("Eres menor de edad");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}
+                    </code>
+                </div>
+
+                <h3>🔄 Bucles</h3>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for i in 1..5 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;py.print("Número:", i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}
+                    </code>
+                </div>
+
+                <h3>Functions</h3>
+                <div class="code-block">
+                    <code>
+func saludar(nombre) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("¡Hola,", nombre, "!");<br>
+}<br>
+<br>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;saludar("Carlos");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;saludar("María");<br>
+}
+                    </code>
+                </div>
+
+                <h2>Primer Programa Gráfico</h2>
+
+                <h3>Círculo Simple</h3>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(400, 400, "Mi Primer Círculo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(200, 200, 80, "Rojo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.update_screen();<br>
+}
+                    </code>
+                </div>
+
+                <h3>Múltiples Formas</h3>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(600, 400, "Formas");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(150, 200, 60, "Rojo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(300, 200, 60, "Verde");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(450, 200, 60, "Azul");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_point(150, 100, "Amarillo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_point(300, 100, "Amarillo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_point(450, 100, "Amarillo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.update_screen();<br>
+}
+                    </code>
+                </div>
+
+                <h2>Consejos para Principiantes</h2>
+                <div class="info-box">
+                    <ol>
+                        <li><strong>Empieza simple:</strong> Comienza con programas pequeños y ve agregando complejidad</li>
+                        <li><strong>Usa el REPL:</strong> Experimenta con comandos antes de escribir programas completos</li>
+                        <li><strong>Comenta tu código:</strong> Usa <code>#</code> para explicar qué hace cada parte</li>
+                        <li><strong>Prueba frecuentemente:</strong> Ejecuta tu código después de cada cambio</li>
+                        <li><strong>Lee los errores:</strong> Los mensajes de error te indican qué está mal</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <strong>💡 Consejo:</strong> El editor OPN integrado te ayudará con autocompletado y detección de errores en tiempo real.
+                </div>
+            </section>
+
+            <!-- INSTALLATION -->
+            <section id="installation" class="content-section">
+                <h1>⚙️ Instalación de OPN</h1>
+
+                <h2>Requisitos del Sistema</h2>
+                <h3>Software Necesario</h3>
+                <ul>
+                    <li><strong>Python 3.8 o superior</strong></li>
+                    <li><strong>Tkinter</strong> (incluido con Python en la mayoría de instalaciones)</li>
+                    <li><strong>Sistema Operativo:</strong> Windows, macOS, o Linux</li>
+                </ul>
+
+                <h3>Verificar Python</h3>
+                <div class="code-block">
+                    <code>python --version</code>
+                </div>
+                <p>Debe mostrar Python 3.8 o superior.</p>
+
+                <h3>Verificar Tkinter</h3>
+                <div class="code-block">
+                    <code>python -c "import tkinter; print('Tkinter OK')"</code>
+                </div>
+                <p>Si muestra "Tkinter OK", está instalado correctamente.</p>
+
+                <h2>Instalación desde el Código Fuente</h2>
+
+                <h3>Paso 1: Descargar el Repositorio</h3>
+                <div class="code-block">
+                    <code>git clone https://github.com/tu-usuario/opn.git<br>
+cd opn</code>
+                </div>
+
+                <h3>Paso 2: Navegar al Directorio</h3>
+                <div class="code-block">
+                    <code>cd OPN4/prisma-lang/src</code>
+                </div>
+
+                <h3>Paso 3: Ejecutar OPN</h3>
+                <div class="code-block">
+                    <code>python -m prisma</code>
+                </div>
+
+                <h2>Verificación de Instalación</h2>
+
+                <h3>Probar la Instalación</h3>
+                <ol>
+                    <li>Inicia el REPL:
+                        <div class="code-block">
+                            <code>cd OPN4/prisma-lang/src<br>
+python -m prisma</code>
+                        </div>
+                    </li>
+                    <li>Deberías ver:
+                        <div class="code-block">
+                            <code>OPN Interactive Shell<br>
+Type 'exit' to quit, 'cls' to clear screen<br>
+opn></code>
+                        </div>
+                    </li>
+                    <li>Ejecuta un comando simple:
+                        <div class="code-block">
+                            <code>opn> py.print("Hola, OPN!");<br>
+Hola, OPN!</code>
+                        </div>
+                    </li>
+                </ol>
+
+                <h3>Probar Gráficos</h3>
+                <div class="code-block">
+                    <code>opn> gfx.setup_canvas(400, 400, "Test");<br>
+opn> gfx.draw_circle(200, 200, 50, "Rojo");<br>
+opn> gfx.update_screen();</code>
+                </div>
+                <p>Debe aparecer una ventana con un círculo rojo.</p>
+
+                <h2>Solución de Problemas</h2>
+
+                <h3>Error: "No module named 'prisma'"</h3>
+                <p><strong>Solución:</strong> Asegúrate de estar en el directorio correcto:</p>
+                <div class="code-block">
+                    <code>cd OPN4/prisma-lang/src<br>
+python -m prisma</code>
+                </div>
+
+                <h3>Error: "No module named 'tkinter'"</h3>
+
+                <h4>Windows:</h4>
+                <ul>
+                    <li>Reinstala Python desde python.org asegurándote de marcar "tcl/tk and IDLE"</li>
+                </ul>
+
+                <h4>Linux (Ubuntu/Debian):</h4>
+                <div class="code-block">
+                    <code>sudo apt-get install python3-tk</code>
+                </div>
+
+                <h4>macOS:</h4>
+                <div class="code-block">
+                    <code>brew install python-tk</code>
+                </div>
+
+                <h3>La ventana gráfica no aparece</h3>
+                <ol>
+                    <li>Verifica que Tkinter esté instalado:
+                        <div class="code-block">
+                            <code>python -c "import tkinter; tkinter.Tk()"</code>
+                        </div>
+                    </li>
+                    <li>Asegúrate de llamar a <code>gfx.update_screen()</code></li>
+                </ol>
+
+                <h3>Error: "Canvas no inicializado"</h3>
+                <p>Llama a <code>gfx.setup_canvas()</code> antes de dibujar.</p>
+
+                <div class="warning-box">
+                    <strong>⚠️ Nota:</strong> Si encuentras errores de tkinter, revisa la sección de Solución de Problemas anterior.
+                </div>
+
+                <h2>Próximos Pasos</h2>
+                <p>Ahora que tienes OPN instalado:</p>
+                <ul>
+                    <li>Lee la Guía de Inicio Rápido en la sección <strong>Primeros Pasos</strong></li>
+                    <li>Explora los <strong>Ejemplos de Gráficos</strong></li>
+                    <li>Consulta la <strong>Referencia del Lenguaje</strong></li>
+                </ul>
+            </section>
+
+            <!-- LANGUAGE REFERENCE -->
+            <section id="language-ref" class="content-section">
+                <h1>📚 Referencia del Lenguaje</h1>
+
+                <h2>Estructura del Programa</h2>
+                <div class="code-block">
+                    <code>
+func mi_funcion() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("Desde una función");<br>
+}<br>
+<br>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("¡Hola, OPN!");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mi_funcion();<br>
+}
+                    </code>
+                </div>
+
+                <h2>Tipos de Datos</h2>
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Ejemplo</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>int</code></td>
+                            <td><code>10</code></td>
+                            <td>Números enteros</td>
+                        </tr>
+                        <tr>
+                            <td><code>float</code></td>
+                            <td><code>3.14</code></td>
+                            <td>Números decimales</td>
+                        </tr>
+                        <tr>
+                            <td><code>string</code></td>
+                            <td><code>"hola"</code></td>
+                            <td>Texto</td>
+                        </tr>
+                        <tr>
+                            <td><code>boolean</code></td>
+                            <td><code>true</code></td>
+                            <td>Verdadero/Falso</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Operadores</h2>
+                <h3>Aritméticos</h3>
+                <p><code>+</code> (suma), <code>-</code> (resta), <code>*</code> (multiplicación), <code>/</code> (división)</p>
+
+                <h3>Comparación</h3>
+                <p><code>==</code> (igual), <code>!=</code> (diferente), <code>&lt;</code> (menor), <code>&gt;</code> (mayor), <code>&lt;=</code>, <code>&gt;=</code></p>
+
+                <h3>Lógicos</h3>
+                <p><code>and</code> (Y), <code>or</code> (O), <code>not</code> (NO)</p>
+
+                <h2>Librería Estándar</h2>
+                <h3>py - Estilo Python</h3>
+                <ul>
+                    <li><code>py.print(...valores)</code> - Imprime valores</li>
+                    <li><code>py.input(prompt)</code> - Lee entrada del usuario</li>
+                    <li><code>py.random.randint(a, b)</code> - Número aleatorio</li>
+                </ul>
+
+                <h3>c - Estilo C</h3>
+                <ul>
+                    <li><code>c.printf(formato, ...valores)</code> - Imprime con formato</li>
+                </ul>
+
+                <h3>cpp - Estilo C++</h3>
+                <ul>
+                    <li><code>cpp.cout(valor)</code> - Imprime valor con nueva línea</li>
+                </ul>
+
+                <h3>cs - Estilo C#</h3>
+                <ul>
+                    <li><code>cs.write_line(valor)</code> - Imprime valor con nueva línea</li>
+                </ul>
+
+                <h3>js - Estilo JavaScript</h3>
+                <ul>
+                    <li><code>js.log(valor)</code> - Log similar a console.log</li>
+                </ul>
+
+                <h3>css - Estilo CSS</h3>
+                <ul>
+                    <li><code>css.set(selector, propiedad, valor)</code> - Define regla CSS</li>
+                </ul>
+
+                <h2>Funciones de Control de Flujo</h2>
+                <h3>range(start, end)</h3>
+                <p>Devuelve un rango para usar en bucles for.</p>
+                <div class="code-block">
+                    <code>
+for i in range(1, 10) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print(i);<br>
+}
+                    </code>
+                </div>
+            </section>
+
+            <!-- SYNTAX -->
+            <section id="syntax" class="content-section">
+                <h1>✏️ Sintaxis de OPN</h1>
+
+                <h2>Estructura del Programa</h2>
+                <ol>
+                    <li>Define funciones reutilizables con la palabra clave <code>func</code></li>
+                    <li>Proporciona un bloque principal <code>main { ... }</code></li>
+                    <li>Las instrucciones se separan con puntos y comas (;)</li>
+                    <li>Los bloques se delimitan con llaves { }</li>
+                </ol>
+
+                <h2>Comentarios</h2>
+                <p>Los comentarios empiezan con <code>#</code> y se extienden hasta el final de la línea.</p>
+                <div class="code-block">
+                    <code>
+# Esto es un comentario<br>
+let x = 10; # Comentario inline
+                    </code>
+                </div>
+
+                <h2>Declaraciones y Sentencias</h2>
+
+                <h3>Variables</h3>
+                <ul>
+                    <li>Introduce variables con <code>let nombre = expression;</code></li>
+                    <li>Reasigna una variable existente con <code>set nombre = expression;</code></li>
+                    <li>Usa <code>cls</code> o <code>clear</code> para limpiar la consola</li>
+                </ul>
+
+                <div class="code-block">
+                    <code>
+let variable = valor;<br>
+set variable = nuevo_valor;
+                    </code>
+                </div>
+
+                <h2>Funciones</h2>
+                <p>Los parámetros son dinámicamente tipados. <code>main</code> se comporta como una función anónima sin parámetros.</p>
+                <div class="code-block">
+                    <code>
+func sumar(a, b) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return a + b;<br>
+}<br>
+<br>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let resultado = sumar(5, 3);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print(resultado);<br>
+}
+                    </code>
+                </div>
+
+                <h2>Expresiones</h2>
+                <ol>
+                    <li><strong>Literales:</strong> números enteros (42), decimales (3.14), strings ("texto"), booleanos (true, false)</li>
+                    <li><strong>Aritméticas:</strong> +, -, *, / con precedencia estándar</li>
+                    <li><strong>Comparaciones:</strong> ==, !=, <, <=, >, >= (devuelven booleanos)</li>
+                    <li><strong>Lógicas:</strong> and, or, not</li>
+                    <li><strong>Agrupación:</strong> paréntesis para cambiar precedencia</li>
+                    <li><strong>Llamadas a funciones:</strong> <code>identificador(arg1, arg2)</code> o <code>namespace.identificador(args)</code></li>
+                </ol>
+
+                <h2>Control de Flujo</h2>
+
+                <h3>if/else</h3>
+                <div class="code-block">
+                    <code>
+if condición {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;# rama positiva<br>
+} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;# rama alternativa<br>
+}
+                    </code>
+                </div>
+                <ul>
+                    <li>Los condicionales <code>if</code> requieren llaves para ambas ramas</li>
+                    <li>La rama <code>else</code> es opcional</li>
+                </ul>
+
+                <h3>for</h3>
+                <p>Los bucles usan <code>for nombre in inicio..fin { ... }</code>, donde <code>fin</code> es exclusivo.</p>
+                <div class="code-block">
+                    <code>
+for i in 1..10 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print(i);<br>
+}
+                    </code>
+                </div>
+
+                <h2>Ejemplo Completo</h2>
+                <div class="code-block">
+                    <code>
+func greet(name) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("Hello, " + name);<br>
+}<br>
+<br>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let audience = "OPN";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;greet(audience);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;js.log("Program finished");<br>
+}
+                    </code>
+                </div>
+            </section>
+
+            <!-- GFX API -->
+            <section id="gfx-api" class="content-section">
+                <h1>🎨 API de Gráficos (GFX)</h1>
+
+                <div class="info-box">
+                    <p>El módulo <code>gfx</code> proporciona capacidades de renderizado 2D utilizando <strong>Tkinter</strong> como motor de renderizado.</p>
+                </div>
+
+                <h2>Introducción</h2>
+                <p>El módulo <code>gfx</code> está disponible automáticamente en todos los programas OPN. No requiere importación explícita.</p>
+
+                <h3>Motor de Renderizado</h3>
+                <ul>
+                    <li><strong>Versión actual:</strong> Tkinter</li>
+                    <li><strong>Características:</strong>
+                        <ul>
+                            <li>Canvas 2D con coordenadas cartesianas</li>
+                            <li>Sistema de colores predefinidos</li>
+                            <li>Renderizado en tiempo real</li>
+                            <li>Gestión automática de ventanas</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h2>Configuración Inicial</h2>
+
+                <h3>gfx.setup_canvas(width, height, title)</h3>
+                <p>Inicializa el canvas de dibujo y crea la ventana principal.</p>
+
+                <h4>Parámetros:</h4>
+                <ul>
+                    <li><code>width</code> (int): Ancho del canvas en píxeles</li>
+                    <li><code>height</code> (int): Alto del canvas en píxeles</li>
+                    <li><code>title</code> (string): Título de la ventana</li>
+                </ul>
+
+                <h4>Ejemplo:</h4>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(800, 600, "Mi Aplicación");<br>
+}
+                    </code>
+                </div>
+
+                <h4>Notas:</h4>
+                <ul>
+                    <li>Debe llamarse antes de cualquier función de dibujo</li>
+                    <li>Solo se puede llamar una vez por programa</li>
+                    <li>El color de fondo por defecto es <code>#2c3e50</code> (azul oscuro)</li>
+                </ul>
+
+                <h2>Funciones de Dibujo</h2>
+
+                <h3>gfx.draw_point(x, y, color)</h3>
+                <p>Dibuja un punto (círculo pequeño de 2px de radio) en las coordenadas especificadas.</p>
+
+                <h4>Parámetros:</h4>
+                <ul>
+                    <li><code>x</code> (int): Coordenada X</li>
+                    <li><code>y</code> (int): Coordenada Y</li>
+                    <li><code>color</code> (string): Nombre del color</li>
+                </ul>
+
+                <h4>Ejemplo:</h4>
+                <div class="code-block">
+                    <code>gfx.draw_point(100, 100, "Rojo");<br>
+gfx.draw_point(200, 150, "Verde");</code>
+                </div>
+
+                <h3>gfx.draw_circle(x, y, radius, color)</h3>
+                <p>Dibuja un círculo relleno centrado en las coordenadas especificadas.</p>
+
+                <h4>Parámetros:</h4>
+                <ul>
+                    <li><code>x</code> (int): Coordenada X del centro</li>
+                    <li><code>y</code> (int): Coordenada Y del centro</li>
+                    <li><code>radius</code> (int): Radio en píxeles</li>
+                    <li><code>color</code> (string): Nombre del color</li>
+                </ul>
+
+                <h4>Ejemplo:</h4>
+                <div class="code-block">
+                    <code>gfx.draw_circle(400, 300, 50, "Azul");<br>
+gfx.draw_circle(500, 300, 75, "Púrpura");</code>
+                </div>
+
+                <h2>Gestión de Ventana</h2>
+
+                <h3>gfx.update_screen()</h3>
+                <p>Actualiza el canvas para mostrar todos los cambios realizados.</p>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(800, 600, "Demo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(400, 300, 100, "Rojo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.update_screen();<br>
+}
+                    </code>
+                </div>
+
+                <h3>gfx.init()</h3>
+                <p>Inicializa el sistema de ventanas Tkinter manualmente. Generalmente no es necesario.</p>
+
+                <h3>gfx.quit()</h3>
+                <p>Cierra la ventana y libera recursos. Se llama automáticamente al finalizar.</p>
+
+                <h2>Utilidades</h2>
+
+                <h3>gfx.get_random_color()</h3>
+                <p>Devuelve un nombre de color aleatorio de la paleta disponible.</p>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let color = gfx.get_random_color();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(400, 400, "Color Aleatorio");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(200, 200, 100, color);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.update_screen();<br>
+}
+                    </code>
+                </div>
+
+                <h2>Sistema de Coordenadas</h2>
+                <p>El canvas usa un sistema de coordenadas estándar:</p>
+                <ul>
+                    <li><strong>Origen:</strong> Esquina superior izquierda (0, 0)</li>
+                    <li><strong>Eje X:</strong> Aumenta hacia la derecha</li>
+                    <li><strong>Eje Y:</strong> Aumenta hacia abajo</li>
+                </ul>
+
+                <h2>Ejemplo Completo</h2>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(800, 600, "Demo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(200, 300, 80, "Rojo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(400, 300, 80, "Verde");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(600, 300, 80, "Azul");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.update_screen();<br>
+}
+                    </code>
+                </div>
+            </section>
+
+            <!-- COLORS -->
+            <section id="gfx-colors" class="content-section">
+                <h1>🎭 Paleta de Colores</h1>
+
+                <p>El módulo <code>gfx</code> proporciona 8 colores predefinidos con nombres en español:</p>
+
+                <div class="colors-grid">
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: #e74c3c;"></div>
+                        <code>"Rojo"</code>
+                        <small>#e74c3c</small>
+                        <p>Rojo vibrante</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: #2ecc71;"></div>
+                        <code>"Verde"</code>
+                        <small>#2ecc71</small>
+                        <p>Verde esmeralda</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: #3498db;"></div>
+                        <code>"Azul"</code>
+                        <small>#3498db</small>
+                        <p>Azul cielo</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: #f1c40f;"></div>
+                        <code>"Amarillo"</code>
+                        <small>#f1c40f</small>
+                        <p>Amarillo dorado</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: #9b59b6;"></div>
+                        <code>"Púrpura"</code>
+                        <small>#9b59b6</small>
+                        <p>Púrpura amatista</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: #1abc9c;"></div>
+                        <code>"Cian"</code>
+                        <small>#1abc9c</small>
+                        <p>Cian turquesa</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: #ecf0f1;"></div>
+                        <code>"Blanco"</code>
+                        <small>#ecf0f1</small>
+                        <p>Blanco nube</p>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: #2c3e50;"></div>
+                        <code>"Negro"</code>
+                        <small>#2c3e50</small>
+                        <p>Negro medianoche</p>
+                    </div>
+                </div>
+
+                <h2>Uso de Colores</h2>
+                <p>Los colores se especifican como strings con el nombre exacto (sensible a mayúsculas):</p>
+                <div class="code-block">
+                    <code>
+gfx.draw_circle(x, y, radio, "NombreColor");<br>
+gfx.draw_point(x, y, "NombreColor");
+                    </code>
+                </div>
+
+                <h3>Reglas Importantes</h3>
+                <ol>
+                    <li><strong>Case-sensitive:</strong> Debe escribirse exactamente como se muestra
+                        <ul>
+                            <li>✅ Correcto: <code>"Rojo"</code>, <code>"Azul"</code>, <code>"Púrpura"</code></li>
+                            <li>❌ Incorrecto: <code>"rojo"</code>, <code>"AZUL"</code>, <code>"purpura"</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Acentos:</strong> Respetar los acentos en los nombres
+                        <ul>
+                            <li>✅ Correcto: <code>"Púrpura"</code></li>
+                            <li>❌ Incorrecto: <code>"Purpura"</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Color por defecto:</strong> Si se proporciona un nombre inválido, se usa blanco (#ffffff)</li>
+                </ol>
+
+                <h2>Ejemplos de Uso</h2>
+
+                <h3>Todos los Colores</h3>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(800, 400, "Paleta de Colores");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(100, 200, 40, "Rojo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(200, 200, 40, "Verde");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(300, 200, 40, "Azul");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(400, 200, 40, "Amarillo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(500, 200, 40, "Púrpura");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(600, 200, 40, "Cian");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(700, 200, 40, "Blanco");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.update_screen();<br>
+}
+                    </code>
+                </div>
+
+                <h3>Esquemas de Color Recomendados</h3>
+                <p><strong>Colores Primarios:</strong> "Rojo", "Azul", "Amarillo"</p>
+                <p><strong>Colores Fríos:</strong> "Azul", "Cian", "Púrpura"</p>
+                <p><strong>Colores Cálidos:</strong> "Rojo", "Amarillo", "Púrpura"</p>
+                <p><strong>Alto Contraste:</strong> "Negro", "Blanco" / "Rojo", "Cian" / "Azul", "Amarillo"</p>
+
+                <div class="info-box">
+                    <strong>⚠️ Importante:</strong> Los nombres de colores son sensibles a mayúsculas y acentos.
+                </div>
+            </section>
+
+            <!-- EXAMPLES -->
+            <section id="gfx-examples" class="content-section">
+                <h1>📸 Ejemplos de Gráficos</h1>
+
+                <p>Esta sección presenta ejemplos prácticos y tutoriales paso a paso para crear gráficos con el módulo <code>gfx</code>.</p>
+
+                <h2>Nivel Básico</h2>
+
+                <h3>Hola Mundo Gráfico</h3>
+                <p>El programa más simple con gráficos:</p>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(400, 400, "Hola Mundo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(200, 200, 50, "Rojo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.update_screen();<br>
+}
+                    </code>
+                </div>
+
+                <h3>Tres Círculos</h3>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(800, 300, "Tres Círculos");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(150, 150, 80, "Rojo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(400, 150, 80, "Verde");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(650, 150, 80, "Azul");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.update_screen();<br>
+}
+                    </code>
+                </div>
+
+                <h3>Línea de Puntos</h3>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(600, 200, "Línea de Puntos");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for i in 1..10 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let x = i * 60;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_point(x, 100, "Azul");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.update_screen();<br>
+}
+                    </code>
+                </div>
+
+                <h2>Nivel Intermedio</h2>
+
+                <h3>Círculos Concéntricos</h3>
+                <div class="code-block">
+                    <code>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(600, 600, "Círculos Concéntricos");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let colores = ["Rojo", "Amarillo", "Verde", "Cian", "Azul", "Púrpura"];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for i in 1..6 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let radio = 250 - (i * 40);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let idx = i - 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(300, 300, radio, colores[idx]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.update_screen();<br>
+}
+                    </code>
+                </div>
+
+                <h2>Nivel Avanzado</h2>
+
+                <h3>Semáforo</h3>
+                <div class="code-block">
+                    <code>
+func dibujar_semaforo(x, y, luz_activa) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(x, y - 80, 30, "Rojo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(x, y, 30, "Amarillo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.draw_circle(x, y + 80, 30, "Verde");<br>
+}<br>
+<br>
+main {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.setup_canvas(400, 600, "Semáforo");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dibujar_semaforo(200, 300, 3);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gfx.update_screen();<br>
+}
+                    </code>
+                </div>
+            </section>
+
+            <!-- EDITOR -->
+            <section id="editor" class="content-section">
+                <h1>💻 Editor OPN</h1>
+
+                <p>El <strong>OPN Editor</strong> es un IDE integrado para el lenguaje OPN con características avanzadas de desarrollo.</p>
+
+                <h2>Iniciar el Editor</h2>
+                <div class="code-block">
+                    <code>python -m prisma editor</code>
+                </div>
+
+                <h2>Interfaz del Editor</h2>
+                <p>El editor está dividido en varias secciones:</p>
+                <ul>
+                    <li><strong>Barra de Menú:</strong> Archivo, Editar, Ejecutar, Ver, Ayuda</li>
+                    <li><strong>Barra de Herramientas:</strong> Acceso rápido a funciones (Nuevo, Abrir, Guardar, etc.)</li>
+                    <li><strong>Editor de Código:</strong> Con números de línea, resaltado de sintaxis y deshacer/rehacer ilimitado</li>
+                    <li><strong>Panel de Consola:</strong> Salida del programa en tiempo real</li>
+                    <li><strong>Panel de Documentación:</strong> Integrada con búsqueda y filtrado</li>
+                    <li><strong>Panel de Errores:</strong> Muestra errores y advertencias</li>
+                </ul>
+
+                <h2>Atajos de Teclado</h2>
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Atajo</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Ctrl+N</td><td>Nuevo archivo</td></tr>
+                        <tr><td>Ctrl+O</td><td>Abrir archivo</td></tr>
+                        <tr><td>Ctrl+S</td><td>Guardar</td></tr>
+                        <tr><td>Ctrl+Shift+S</td><td>Guardar como</td></tr>
+                        <tr><td>Ctrl+Z</td><td>Deshacer</td></tr>
+                        <tr><td>Ctrl+Y</td><td>Rehacer</td></tr>
+                        <tr><td>Ctrl+X</td><td>Cortar</td></tr>
+                        <tr><td>Ctrl+C</td><td>Copiar</td></tr>
+                        <tr><td>Ctrl+V</td><td>Pegar</td></tr>
+                        <tr><td>Ctrl+F</td><td>Buscar</td></tr>
+                        <tr><td>Ctrl+Space</td><td>Autocompletado</td></tr>
+                        <tr><td>F5</td><td>Ejecutar código</td></tr>
+                        <tr><td>F6</td><td>Transpilar código</td></tr>
+                        <tr><td>F7</td><td>Verificar errores</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Autocompletado Inteligente</h2>
+                <p>Presiona <code>Ctrl+Space</code> para activar el autocompletado que sugiere:</p>
+                <ul>
+                    <li>Palabras clave del lenguaje</li>
+                    <li>Funciones builtin</li>
+                    <li>Funciones de la API gfx</li>
+                    <li>Colores predefinidos</li>
+                    <li>Aliases de funciones</li>
+                </ul>
+
+                <h2>Detector de Errores en Tiempo Real</h2>
+                <p>El editor detecta errores mientras escribes:</p>
+                <ul>
+                    <li>❌ Falta de <code>:</code> en declaraciones</li>
+                    <li>⚠️ Paréntesis desbalanceados <code>()</code></li>
+                    <li>⚠️ Corchetes desbalanceados <code>[]</code></li>
+                    <li>⚠️ Llaves desbalanceadas <code>{}</code></li>
+                </ul>
+                <p>Presiona <code>F7</code> o usa el menú <strong>Ejecutar → Verificar errores</strong> para verificación manual.</p>
+
+                <h2>Consola Integrada</h2>
+                <p>La consola del editor es <strong>funcional y real</strong>, no una simulación. Permite ejecutar comandos como:</p>
+                <ul>
+                    <li><code>help</code> - Muestra lista de comandos</li>
+                    <li><code>clear</code> - Limpia la consola</li>
+                    <li><code>version</code> - Muestra versión de OPN</li>
+                    <li><code>run &lt;archivo&gt;</code> - Ejecuta un archivo</li>
+                    <li><code>python &lt;código&gt;</code> - Ejecuta código Python directamente</li>
+                </ul>
+            </section>
+
+            <!-- REPL -->
+            <section id="repl" class="content-section">
+                <h1>⌨️ REPL - Consola Interactiva</h1>
+
+                <p>Guía completa del REPL (Read-Eval-Print Loop) de OPN.</p>
+
+                <h2>Introducción</h2>
+                <p>El REPL de OPN es una consola interactiva que permite:</p>
+                <ul>
+                    <li>✨ Ejecutar código OPN línea por línea</li>
+                    <li>🧪 Experimentar con sintaxis y funciones</li>
+                    <li>🎨 Probar gráficos rápidamente</li>
+                    <li>🔧 Depurar código</li>
+                    <li>📝 Aprender el lenguaje de forma interactiva</li>
+                </ul>
+
+                <h2>Iniciar el REPL</h2>
+                <div class="code-block">
+                    <code>cd OPN4/prisma-lang/src<br>
+python -m prisma</code>
+                </div>
+
+                <p><strong>Salida Esperada:</strong></p>
+                <div class="code-block">
+                    <code>OPN Interactive Shell<br>
+Type 'exit' to quit, 'cls' to clear screen<br>
+opn></code>
+                </div>
+
+                <p>El prompt <code>opn></code> indica que el REPL está listo para recibir comandos.</p>
+
+                <h2>Comandos Básicos</h2>
+
+                <h3>Imprimir Texto</h3>
+                <div class="code-block">
+                    <code>opn> py.print("Hola, REPL");<br>
+Hola, REPL</code>
+                </div>
+
+                <h3>Variables</h3>
+                <p><strong>Declarar:</strong></p>
+                <div class="code-block">
+                    <code>opn> let x = 10;<br>
+opn> let nombre = "Ana";<br>
+opn> let activo = true;</code>
+                </div>
+
+                <p><strong>Usar:</strong></p>
+                <div class="code-block">
+                    <code>opn> py.print(x);<br>
+10<br>
+opn> py.print(nombre);<br>
+Ana</code>
+                </div>
+
+                <p><strong>Modificar:</strong></p>
+                <div class="code-block">
+                    <code>opn> set x = 20;<br>
+opn> py.print(x);<br>
+20</code>
+                </div>
+
+                <h3>Operaciones Matemáticas</h3>
+                <div class="code-block">
+                    <code>opn> py.print(5 + 3);<br>
+8<br>
+opn> py.print(10 * 2);<br>
+20</code>
+                </div>
+
+                <h3>Gráficos Interactivos</h3>
+                <div class="code-block">
+                    <code>opn> gfx.setup_canvas(400, 400, "REPL Graphics");<br>
+opn> gfx.draw_circle(200, 200, 80, "Azul");<br>
+opn> gfx.update_screen();</code>
+                </div>
+
+                <h2>Comandos Especiales</h2>
+
+                <h3>exit - Salir del REPL</h3>
+                <div class="code-block">
+                    <code>opn> exit</code>
+                </div>
+
+                <h3>cls / clear - Limpiar Pantalla</h3>
+                <div class="code-block">
+                    <code>opn> cls</code>
+                </div>
+
+                <h3>!comando - Ejecutar Comandos del Sistema</h3>
+                <div class="code-block">
+                    <code>opn> !dir<br>
+# Lista archivos (Windows)<br>
+opn> !ls<br>
+# Lista archivos (Linux/Mac)</code>
+                </div>
+
+                <h2>Navegación del Historial</h2>
+                <ul>
+                    <li><code>↑ (Flecha Arriba)</code> - Comando anterior</li>
+                    <li><code>↓ (Flecha Abajo)</code> - Comando siguiente</li>
+                </ul>
+
+                <h2>Manejo de Errores</h2>
+                <p>El REPL muestra errores sin cerrar la sesión:</p>
+                <div class="code-block">
+                    <code>opn> let x = 10;<br>
+opn> py.print(y);<br>
+Error: name 'y' is not defined<br>
+opn> # El REPL sigue funcionando</code>
+                </div>
+
+                <h2>Flujo de Trabajo Recomendado</h2>
+                <ol>
+                    <li><strong>Experimentación Rápida:</strong> Prueba ideas antes de escribir programas completos</li>
+                    <li><strong>Desarrollo Iterativo:</strong> Escribe código en el REPL, prueba y copia al archivo</li>
+                    <li><strong>Debugging:</strong> Verifica valores de variables y comportamiento</li>
+                </ol>
+            </section>
+
+            <!-- FILE TYPES -->
+            <section id="file-types" class="content-section">
+                <h1>📄 Tipos de Archivos en OPN</h1>
+
+                <p>OPN utiliza dos extensiones de archivo diferentes, cada una con un propósito específico.</p>
+
+                <h2>📄 Archivos .prisma - Código Ejecutable</h2>
+
+                <p><strong>Propósito:</strong> Contienen código fuente ejecutable del lenguaje OPN.</p>
+
+                <h3>Características:</h3>
+                <ul>
+                    <li>Contienen lógica de programa, funciones, clases y estructuras de control</li>
+                    <li>Se transpilan a Python y se ejecutan</li>
+                    <li>Soportan todas las características del lenguaje OPN</li>
+                    <li>Pueden importar módulos y usar la API de gráficos</li>
+                </ul>
+
+                <h3>Ejemplo de archivo .prisma:</h3>
+                <div class="code-block">
+                    <code>
+func main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("Hola desde OPN!");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let suma = 10 + 20;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("La suma es:", suma);<br>
+}
+                    </code>
+                </div>
+
+                <h3>Ejecutar un archivo .prisma:</h3>
+                <div class="code-block">
+                    <code>python -m prisma run programa.prisma</code>
+                </div>
+
+                <h2>📦 Archivos .opn - Datos y Configuración</h2>
+
+                <p><strong>Propósito:</strong> Almacenamiento de datos y configuración avanzada.</p>
+
+                <h3>Características:</h3>
+                <ul>
+                    <li>Almacenan datos estructurados, configuraciones y recursos</li>
+                    <li>Pueden contener definiciones de datos, constantes y estructuras</li>
+                    <li>Útiles para separar datos de la lógica del programa</li>
+                    <li>Pueden ser importados por archivos .prisma</li>
+                </ul>
+
+                <h3>Casos de uso:</h3>
+                <ul>
+                    <li>Configuración de aplicaciones</li>
+                    <li>Datos de juegos (niveles, personajes, items)</li>
+                    <li>Recursos estáticos (colores, constantes, mensajes)</li>
+                    <li>Definiciones de estructuras de datos</li>
+                </ul>
+
+                <h3>Ejemplo de archivo .opn:</h3>
+                <div class="code-block">
+                    <code>
+let COLORES = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"rojo": "#FF0000",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"verde": "#00FF00",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"azul": "#0000FF"<br>
+};<br>
+<br>
+let CONFIGURACION = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"ancho_ventana": 800,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"alto_ventana": 600,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"titulo": "Mi Juego OPN"<br>
+};<br>
+<br>
+let NIVELES = [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{"nombre": "Nivel 1", "dificultad": 1},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{"nombre": "Nivel 2", "dificultad": 2}<br>
+];
+                    </code>
+                </div>
+
+                <h2>🔄 Comparación</h2>
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>.prisma</th>
+                            <th>.opn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Propósito</strong></td>
+                            <td>Código ejecutable</td>
+                            <td>Datos y configuración</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contiene</strong></td>
+                            <td>Funciones, clases, lógica</td>
+                            <td>Constantes, estructuras de datos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ejecución</strong></td>
+                            <td>Se ejecuta directamente</td>
+                            <td>Se importa como módulo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Uso típico</strong></td>
+                            <td>Programas principales</td>
+                            <td>Archivos de recursos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Transpilación</strong></td>
+                            <td>Genera código Python ejecutable</td>
+                            <td>Genera módulos de datos</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>📋 Convenciones de Nombres</h2>
+
+                <h3>Para archivos .prisma:</h3>
+                <ul>
+                    <li><code>main.prisma</code> - Punto de entrada principal</li>
+                    <li><code>utils.prisma</code> - Utilidades y funciones auxiliares</li>
+                    <li><code>game.prisma</code> - Lógica del juego</li>
+                    <li><code>graphics.prisma</code> - Funciones de gráficos</li>
+                </ul>
+
+                <h3>Para archivos .opn:</h3>
+                <ul>
+                    <li><code>config.opn</code> - Configuración de la aplicación</li>
+                    <li><code>data.opn</code> - Datos generales</li>
+                    <li><code>levels.opn</code> - Datos de niveles</li>
+                    <li><code>constants.opn</code> - Constantes del programa</li>
+                    <li><code>resources.opn</code> - Recursos y assets</li>
+                </ul>
+
+                <h2>🎯 Mejores Prácticas</h2>
+                <ol>
+                    <li><strong>Separación de Responsabilidades:</strong> Mantén el código ejecutable en .prisma y datos en .opn</li>
+                    <li><strong>Organización Modular:</strong> Agrupa archivos relacionados en carpetas</li>
+                    <li><strong>Nomenclatura Clara:</strong> Usa nombres descriptivos que indiquen el contenido</li>
+                    <li><strong>Usa imports:</strong> Conecta código y datos usando imports</li>
+                </ol>
+            </section>
+
+            <!-- VARIABLES -->
+            <section id="variables" class="content-section">
+                <h1>📝 Variables</h1>
+
+                <p>En el lenguaje OPN, las variables se utilizan para almacenar y gestionar datos. Hay dos comandos principales para trabajar con variables: <code>let</code> y <code>set</code>.</p>
+
+                <h2>1. Declaración de Variables con let</h2>
+
+                <p>El comando <code>let</code> se usa para crear (declarar) una nueva variable y asignarle un valor inicial. Una vez que una variable es creada con <code>let</code>, no puedes usar <code>let</code> de nuevo para la misma variable.</p>
+
+                <h3>Sintaxis:</h3>
+                <div class="code-block">
+                    <code>&lt;nombre_variable&gt; = &lt;valor&gt;;</code>
+                </div>
+
+                <h3>Ejemplos:</h3>
+                <div class="code-block">
+                    <code>
+# Declara una variable numérica<br>
+let edad = 25;<br>
+<br>
+# Declara una variable de texto<br>
+let nombre = "Juan";<br>
+<br>
+# Declara una variable booleana<br>
+let activo = true;
+                    </code>
+                </div>
+
+                <h2>2. Reasignación de Variables con set</h2>
+
+                <p>El comando <code>set</code> se usa para cambiar o actualizar el valor de una variable que **ya existe** (que fue creada previamente con <code>let</code>).</p>
+
+                <h3>Sintaxis:</h3>
+                <div class="code-block">
+                    <code>set &lt;nombre_variable&gt; = &lt;nuevo_valor&gt;;</code>
+                </div>
+
+                <h3>Ejemplo:</h3>
+                <div class="code-block">
+                    <code>
+# Primero, declaramos la variable<br>
+let puntuacion = 100;<br>
+<br>
+# Luego, actualizamos su valor<br>
+set puntuacion = 150;
+                    </code>
+                </div>
+
+                <h2>Tipos de Variables</h2>
+                <div class="code-block">
+                    <code>
+let numero = 42;<br>
+let decimal = 3.14;<br>
+let texto = "Hola";<br>
+let verdadero = true;<br>
+let falso = false;
+                    </code>
+                </div>
+
+                <h2>Reglas Importantes</h2>
+                <ul>
+                    <li><strong>Case-sensitive:</strong> Los nombres son sensibles a mayúsculas (edad ≠ Edad)</li>
+                    <li><strong>Sin números al inicio:</strong> No pueden empezar con números</li>
+                    <li><strong>Nomenclatura:</strong> Usa snake_case para nombres múltiples (mi_variable)</li>
+                    <li><strong>Declaración previa:</strong> Las variables necesitan ser declaradas con <code>let</code> antes de usarlas</li>
+                </ul>
+            </section>
+
+            <!-- STDLIB -->
+            <section id="stdlib" class="content-section">
+                <h1>📦 Librería Estándar</h1>
+
+                <p>OPN incluye una librería estándar expuesta a través de varios espacios de nombres (namespaces). Cada namespace refleja un ecosistema familiar, permitiéndote reutilizar hábitos de otros lenguajes mientras mantienes la sintaxis clara.</p>
+
+                <h2>Módulo py (Python)</h2>
+
+                <h3>py.print(...valores)</h3>
+                <p>Imprime uno o más valores en la consola. Envuelve la función <code>print</code> de Python.</p>
+                <div class="code-block">
+                    <code>
+py.print("Hola");<br>
+py.print("Resultado:", 42);<br>
+py.print(1, 2, 3);
+                    </code>
+                </div>
+
+                <h3>py.input(prompt)</h3>
+                <p>Muestra un prompt y lee una línea de texto desde la consola.</p>
+                <div class="code-block">
+                    <code>
+let nombre = py.input("¿Cómo te llamas? ");<br>
+py.print("Hola,", nombre);
+                    </code>
+                </div>
+
+                <h3>py.random.randint(a, b)</h3>
+                <p>Devuelve un número entero aleatorio entre a y b (ambos incluidos).</p>
+                <div class="code-block">
+                    <code>
+let numero = py.random.randint(1, 100);<br>
+py.print("Número aleatorio:", numero);
+                    </code>
+                </div>
+
+                <h2>Módulo c (Estilo C)</h2>
+
+                <h3>c.printf(formato, ...valores)</h3>
+                <p>Imprime texto con formato usando placeholders estilo printf. Se transpila a formateo de strings de Python.</p>
+                <div class="code-block">
+                    <code>
+c.printf("Hola %s, tienes %d años", "Juan", 25);
+                    </code>
+                </div>
+
+                <h2>Módulo cpp (Estilo C++)</h2>
+
+                <h3>cpp.cout(valor)</h3>
+                <p>Imprime un valor seguido de una nueva línea, similar a <code>std::cout</code>.</p>
+                <div class="code-block">
+                    <code>
+cpp.cout("Hola desde C++");
+                    </code>
+                </div>
+
+                <h2>Módulo cs (Estilo C#)</h2>
+
+                <h3>cs.write_line(valor)</h3>
+                <p>Imprime un valor seguido de una nueva línea, similar a <code>Console.WriteLine</code>.</p>
+                <div class="code-block">
+                    <code>
+cs.write_line("Hola desde C#");
+                    </code>
+                </div>
+
+                <h2>Módulo js (Estilo JavaScript)</h2>
+
+                <h3>js.log(valor)</h3>
+                <p>Imprime un mensaje de diagnóstico, similar a <code>console.log</code>.</p>
+                <div class="code-block">
+                    <code>
+js.log("Debug: valor importante");
+                    </code>
+                </div>
+
+                <h2>Módulo css (Estilo CSS)</h2>
+
+                <h3>css.set(selector, propiedad, valor)</h3>
+                <p>Define una regla de estilo CSS. Registra la regla y imprime confirmación.</p>
+                <div class="code-block">
+                    <code>
+css.set("body", "background-color", "blue");<br>
+css.set(".container", "width", "800px");
+                    </code>
+                </div>
+
+                <h2>Módulo gfx (Gráficos)</h2>
+                <p>Ver la sección <strong>API de Gráficos</strong> para documentación completa del módulo gfx.</p>
+
+                <h2>Funciones de Utilidad</h2>
+
+                <h3>to_string(valor)</h3>
+                <p>Convierte cualquier valor a una cadena de texto.</p>
+                <div class="code-block">
+                    <code>
+let numero = 42;<br>
+let texto = to_string(numero);<br>
+py.print(texto);
+                    </code>
+                </div>
+
+                <h3>to_number(valor)</h3>
+                <p>Intenta convertir una cadena de texto a un número (entero o flotante).</p>
+                <div class="code-block">
+                    <code>
+let numero = to_number("42");<br>
+py.print(numero);<br>
+<br>
+let decimal = to_number("3.14");<br>
+py.print(decimal);
+                    </code>
+                </div>
+
+                <h3>range(start, end)</h3>
+                <p>Devuelve un rango para usar en bucles for.</p>
+                <div class="code-block">
+                    <code>
+for i in range(1, 10) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print(i);<br>
+}
+                    </code>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Nota:</strong> Todos los helpers se implementan en el preámbulo del transpilador, por lo que los programas transpilados se ejecutan sin importaciones adicionales.
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
