@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalación - Documentación OPN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    <span>OPN Docs</span>
+                </div>
+                <button id="theme-toggle" class="theme-btn" title="Cambiar tema">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3 class="nav-title">Inicio</h3>
+                    <ul>
+                        <li><a href="index.html" class="nav-link">🏠 Inicio</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-title">Aprender</h3>
+                    <ul>
+                        <li><a href="getting_started.html" class="nav-link">🚀 Primeros Pasos</a></li>
+                        <li><a href="installation.html" class="nav-link active">⚙️ Instalación</a></li>
+                        <li><a href="language_reference.html" class="nav-link">📚 Referencia del Lenguaje</a></li>
+                        <li><a href="syntax.html" class="nav-link">✏️ Sintaxis</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-title">Gráficos</h3>
+                    <ul>
+                        <li><a href="gfx_api.html" class="nav-link">🎨 API de Gráficos</a></li>
+                        <li><a href="gfx_colors.html" class="nav-link">🎭 Colores</a></li>
+                        <li><a href="gfx_examples.html" class="nav-link">📸 Ejemplos</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-title">Herramientas</h3>
+                    <ul>
+                        <li><a href="editor.html" class="nav-link">💻 Editor OPN</a></li>
+                        <li><a href="repl.html" class="nav-link">⌨️ REPL</a></li>
+                        <li><a href="file_types.html" class="nav-link">📄 Tipos de Archivos</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-title">Referencia</h3>
+                    <ul>
+                        <li><a href="variables.html" class="nav-link">📝 Variables</a></li>
+                        <li><a href="standard_library.html" class="nav-link">📦 Librería Estándar</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>v1.0.0 • Documentación Completa</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section class="content-section active">
+                <h1>⚙️ Instalación de OPN</h1>
+
+                <h2>Requisitos del Sistema</h2>
+                <h3>Software Necesario</h3>
+                <ul>
+                    <li><strong>Python 3.8 o superior</strong></li>
+                    <li><strong>Tkinter</strong> (incluido con Python en la mayoría de instalaciones)</li>
+                    <li><strong>Sistema Operativo:</strong> Windows, macOS, o Linux</li>
+                </ul>
+
+                <h3>Verificar Python</h3>
+                <div class="code-block">
+                    <code>python --version</code>
+                </div>
+                <p>Debe mostrar Python 3.8 o superior.</p>
+
+                <h3>Verificar Tkinter</h3>
+                <div class="code-block">
+                    <code>python -c "import tkinter; print('Tkinter OK')"</code>
+                </div>
+                <p>Si muestra "Tkinter OK", está instalado correctamente.</p>
+
+                <h2>Instalación desde el Código Fuente</h2>
+
+                <h3>Paso 1: Descargar el Repositorio</h3>
+                <div class="code-block">
+                    <code>git clone https://github.com/tu-usuario/opn.git<br>
+cd opn</code>
+                </div>
+
+                <h3>Paso 2: Navegar al Directorio</h3>
+                <div class="code-block">
+                    <code>cd OPN4/prisma-lang/src</code>
+                </div>
+
+                <h3>Paso 3: Ejecutar OPN</h3>
+                <div class="code-block">
+                    <code>python -m prisma</code>
+                </div>
+
+                <h2>Verificación de Instalación</h2>
+
+                <h3>Probar la Instalación</h3>
+                <ol>
+                    <li>Inicia el REPL:
+                        <div class="code-block">
+                            <code>cd OPN4/prisma-lang/src<br>
+python -m prisma</code>
+                        </div>
+                    </li>
+                    <li>Deberías ver:
+                        <div class="code-block">
+                            <code>OPN Interactive Shell<br>
+Type 'exit' to quit, 'cls' to clear screen<br>
+opn></code>
+                        </div>
+                    </li>
+                    <li>Ejecuta un comando simple:
+                        <div class="code-block">
+                            <code>opn> py.print("Hola, OPN!");<br>
+Hola, OPN!</code>
+                        </div>
+                    </li>
+                </ol>
+
+                <h3>Probar Gráficos</h3>
+                <div class="code-block">
+                    <code>opn> gfx.setup_canvas(400, 400, "Test");<br>
+opn> gfx.draw_circle(200, 200, 50, "Rojo");<br>
+opn> gfx.update_screen();</code>
+                </div>
+                <p>Debe aparecer una ventana con un círculo rojo.</p>
+
+                <h2>Solución de Problemas</h2>
+
+                <h3>Error: "No module named 'prisma'"</h3>
+                <p><strong>Solución:</strong> Asegúrate de estar en el directorio correcto:</p>
+                <div class="code-block">
+                    <code>cd OPN4/prisma-lang/src<br>
+python -m prisma</code>
+                </div>
+
+                <h3>Error: "No module named 'tkinter'"</h3>
+
+                <h4>Windows:</h4>
+                <ul>
+                    <li>Reinstala Python desde python.org asegurándote de marcar "tcl/tk and IDLE"</li>
+                </ul>
+
+                <h4>Linux (Ubuntu/Debian):</h4>
+                <div class="code-block">
+                    <code>sudo apt-get install python3-tk</code>
+                </div>
+
+                <h4>macOS:</h4>
+                <div class="code-block">
+                    <code>brew install python-tk</code>
+                </div>
+
+                <h3>La ventana gráfica no aparece</h3>
+                <ol>
+                    <li>Verifica que Tkinter esté instalado:
+                        <div class="code-block">
+                            <code>python -c "import tkinter; tkinter.Tk()"</code>
+                        </div>
+                    </li>
+                    <li>Asegúrate de llamar a <code>gfx.update_screen()</code></li>
+                </ol>
+
+                <div class="warning-box">
+                    <strong>⚠️ Nota:</strong> Si encuentras errores de tkinter, consulta la sección de Solución de Problemas anterior.
+                </div>
+
+                <h2>Próximos Pasos</h2>
+                <p>Ahora que tienes OPN instalado:</p>
+                <ul>
+                    <li>Lee la <a href="getting_started.html">Guía de Inicio Rápido</a></li>
+                    <li>Explora los <a href="gfx_examples.html">Ejemplos de Gráficos</a></li>
+                    <li>Consulta la <a href="language_reference.html">Referencia del Lenguaje</a></li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
