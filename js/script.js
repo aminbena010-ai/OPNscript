@@ -28,6 +28,10 @@ function initTheme() {
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.content-section');
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const mainContent = document.getElementById('main-content');
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -44,6 +48,11 @@ function initNavigation() {
             if (targetSection) {
                 targetSection.classList.add('active');
                 document.getElementById('main-content').scrollTo(0, 0);
+                // Cerrar sidebar en móvil al seleccionar una sección
+                if (window.innerWidth <= 1024) {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
             }
         });
     });
@@ -68,6 +77,19 @@ function initNavigation() {
     // Dispara el evento hashchange en la carga inicial
     if (window.location.hash) {
         window.dispatchEvent(new HashChangeEvent('hashchange'));
+    }
+
+    // Lógica para el menú en móvil
+    if (menuToggle && sidebar && overlay) {
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
     }
 }
 
