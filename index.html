@@ -93,6 +93,7 @@
                     <h3 class="nav-title">Comunidad</h3>
                     <ul>
                         <li><a href="#contact" class="nav-link" data-section="contact"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> Contacto y Feedback</a></li>
+                        <li><a href="#settings" class="nav-link" data-section="settings"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Configuración</a></li>
                     </ul>
                 </div>
             </nav>
@@ -1211,34 +1212,6 @@ opn> # El REPL sigue funcionando</code>
 
                 <p>OPN utiliza dos extensiones de archivo diferentes, cada una con un propósito específico.</p>
 
-                <h2><img src="assets/prisma.png" alt="Icono Prisma" class="file-type-icon"> Archivos .prisma - Código Ejecutable</h2>
-
-                <p><strong>Propósito:</strong> Contienen código fuente ejecutable del lenguaje OPN.</p>
-
-                <h3>Características:</h3>
-                <ul>
-                    <li>Contienen lógica de programa, funciones, clases y estructuras de control</li>
-                    <li>Se transpilan a Python y se ejecutan</li>
-                    <li>Soportan todas las características del lenguaje OPN</li>
-                    <li>Pueden importar módulos y usar la API de gráficos</li>
-                </ul>
-
-                <h3>Ejemplo de archivo .prisma:</h3>
-                <div class="code-block">
-                    <code>
-func main() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;py.print("Hola desde OPN!");<br>
-&nbsp;&nbsp;&nbsp;&nbsp;let suma = 10 + 20;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;py.print("La suma es:", suma);<br>
-}
-                    </code>
-                </div>
-
-                <h3>Ejecutar un archivo .prisma:</h3>
-                <div class="code-block">
-                    <code>python -m prisma run programa.prisma</code>
-                </div>
-
                 <h2><img src="assets/OPN.png" alt="Icono OPN" class="file-type-icon"> Archivos .opn - Datos y Configuración</h2>
 
                 <p><strong>Propósito:</strong> Almacenamiento de datos y configuración avanzada.</p>
@@ -1278,6 +1251,35 @@ let NIVELES = [<br>
 &nbsp;&nbsp;&nbsp;&nbsp;{"nombre": "Nivel 1", "dificultad": 1},<br>
 &nbsp;&nbsp;&nbsp;&nbsp;{"nombre": "Nivel 2", "dificultad": 2}<br>
 ];
+                    </code>
+                </div>
+
+                <h2><img src="assets/prisma.png" alt="Icono Prisma" class="file-type-icon"> Archivos .prisma - Código Ejecutable</h2>
+
+                <p><strong>Propósito:</strong> Contienen código fuente ejecutable del lenguaje OPN.</p>
+
+                <h3>Características:</h3>
+                <ul>
+                    <li>Contienen lógica de programa, funciones, clases y estructuras de control</li>
+                    <li>Se transpilan a Python y se ejecutan</li>
+                    <li>Soportan todas las características del lenguaje OPN</li>
+                    <li>Pueden importar módulos y usar la API de gráficos</li>
+                </ul>
+
+                <h3>Ejemplo de archivo .prisma:</h3>
+                <div class="code-block">
+                    <code>
+func main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("Hola desde OPN!");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let suma = 10 + 20;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;py.print("La suma es:", suma);<br>
+}
+                    </code>
+                </div>
+
+                <h3>Ejecutar un archivo .prisma:</h3>
+                <div class="code-block">
+                    <code>python -m prisma run programa.prisma</code>
                     </code>
                 </div>
 
@@ -1619,6 +1621,47 @@ for i in range(1, 10) {<br>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </section>
+
+            <!-- SETTINGS -->
+            <section id="settings" class="content-section">
+                <h1><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Configuración</h1>
+                
+                <h2>Preferencias de la Página</h2>
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <h4>Animaciones de Scroll</h4>
+                        <p>Activa o desactiva las animaciones al desplazarse por la página.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="animations-toggle" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <h4>Estado de Valoración</h4>
+                        <p>Restablece el aviso de valoración para poder puntuar el lenguaje de nuevo.</p>
+                    </div>
+                    <button id="reset-rating-btn" class="setting-button">Restablecer</button>
+                </div>
+
+                <h2>Plugins</h2>
+                <p>Gestiona los plugins y extensiones de la documentación.</p>
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <h4>Sistema de Comentarios (giscus)</h4>
+                        <p>Permite a la comunidad dejar feedback usando GitHub Discussions.</p>
+                    </div>
+                    <span class="plugin-status active">Activado</span>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <h4>Futuro Plugin</h4>
+                        <p>Descripción de una futura extensión para la web.</p>
+                    </div>
+                    <span class="plugin-status">Desactivado</span>
                 </div>
             </section>
 

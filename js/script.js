@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCopyButtons();
     initBackToTopButton();
     initRatingModal();
+    initSettings();
 });
 
 function initTheme() {
@@ -84,7 +85,7 @@ function addScrollAnimations() {
         });
     }, observerOptions);
     
-    document.querySelectorAll('.content-section h1, .content-section h2, .content-section h3, .content-section p, .content-section ul, .content-section ol, .feature-card, .code-block, .reference-table, .colors-grid, .info-box, .warning-box, .contact-button, .giscus-container').forEach(el => {
+    document.querySelectorAll('.content-section h1, .content-section h2, .content-section h3, .content-section p, .content-section ul, .content-section ol, .feature-card, .code-block, .reference-table, .colors-grid, .info-box, .warning-box, .contact-button, .giscus-container, .setting-item').forEach(el => {
         el.classList.add('animate-on-scroll');
         observer.observe(el);
     });
@@ -195,16 +196,17 @@ function initRatingModal() {
         "¡Excelente!"
     ];
 
-    // Mostrar modal después de 15 segundos, solo si no se ha mostrado antes en la sesión
-    if (!sessionStorage.getItem('ratingModalShown')) {
+    // Mostrar modal después de 15 segundos, solo si el usuario no ha votado/cerrado antes.
+    if (!localStorage.getItem('opnRatingDone')) {
         setTimeout(() => {
             modal.classList.add('visible');
-            sessionStorage.setItem('ratingModalShown', 'true');
         }, 15000);
     }
 
     closeModalBtn.addEventListener('click', () => {
         modal.classList.remove('visible');
+        // Marcar como visto para no volver a mostrarlo.
+        localStorage.setItem('opnRatingDone', 'true');
     });
 
     stars.forEach(star => {
@@ -234,7 +236,36 @@ function initRatingModal() {
             const subject = `Valoración para OPN: ${currentRating}/5 estrellas`;
             const body = `Hola,\n\nMi valoración para el lenguaje OPN es de ${currentRating} de 5 estrellas.\n\nFeedback adicional:\n`;
             window.open(`mailto:amin.bena010@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+            // Marcar como completado y cerrar.
+            localStorage.setItem('opnRatingDone', 'true');
             modal.classList.remove('visible');
         }
+    });
+}
+
+function initSettings() {
+    const animationsToggle = document.getElementById('animations-toggle');
+    const resetRatingBtn = document.getElementById('reset-rating-btn');
+
+    // Cargar estado de las animaciones
+    const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+    animationsToggle.checked = animationsEnabled;
+    if (!animationsEnabled) {
+        document.body.classList.add('no-animations');
+    }
+
+    animationsToggle.addEventListener('change', () => {
+        if (animationsToggle.checked) {
+            localStorage.setItem('animationsEnabled', 'true');
+            document.body.classList.remove('no-animations');
+        } else {
+            localStorage.setItem('animationsEnabled', 'false');
+            document.body.classList.add('no-animations');
+        }
+    });
+
+    resetRatingBtn.addEventListener('click', () => {
+        localStorage.removeItem('opnRatingDone');
+        alert('Estado de valoración restablecido. El aviso aparecerá en tu próxima visita.');
     });
 }
