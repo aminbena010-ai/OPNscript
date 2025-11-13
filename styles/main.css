@@ -300,8 +300,36 @@ body {
     background: none;
     border: none;
     color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 24px;
+    height: 24px;
+    padding: 0;
     cursor: pointer;
-    padding: 8px;
+}
+
+.menu-toggle-btn span {
+    width: 24px;
+    height: 2px;
+    background: var(--text-secondary);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+.sidebar.active + .main-content .menu-toggle-btn span:first-child {
+    transform: rotate(45deg) translate(0px, -1px);
+}
+
+.sidebar.active + .main-content .menu-toggle-btn span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.sidebar.active + .main-content .menu-toggle-btn span:last-child {
+    transform: rotate(-45deg) translate(0px, 1px);
 }
 
 .menu-toggle-btn:hover {
@@ -311,6 +339,7 @@ body {
 .main-content {
     overflow-y: auto;
     padding: 40px;
+    position: relative; /* Contexto para el sidebar */
 }
 
 .content-section {
@@ -330,6 +359,12 @@ body {
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Anula las animaciones cuando están desactivadas en la configuración */
+body.no-animations .animate-on-scroll {
+    opacity: 1;
+    transform: none;
 }
 
 .hero-section {
@@ -653,11 +688,11 @@ strong {
     
     .sidebar {
         position: absolute;
-        left: -280px;
         height: 100vh;
         width: 280px;
         transition: transform 0.3s ease;
         transform: translateX(-100%);
+        top: 0;
         z-index: 200;
     }
     
@@ -671,6 +706,7 @@ strong {
     
     .main-content {
         padding: 24px;
+        overflow-x: hidden; /* Evita el scroll horizontal */
     }
     
     .hero-section h1 {

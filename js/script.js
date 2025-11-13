@@ -84,11 +84,19 @@ function initNavigation() {
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
             overlay.classList.toggle('active');
+            if (sidebar.classList.contains('active')) {
+                menuToggle.setAttribute('aria-label', 'Cerrar menú');
+                // Mover foco al primer elemento del menú
+                sidebar.querySelector('a').focus();
+            } else {
+                menuToggle.setAttribute('aria-label', 'Abrir menú');
+            }
         });
 
         overlay.addEventListener('click', () => {
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
+            menuToggle.setAttribute('aria-label', 'Abrir menú');
         });
     }
 }
@@ -287,11 +295,12 @@ function initSettings() {
         if (animationsToggle.checked) {
             localStorage.setItem('animationsEnabled', 'true');
             document.body.classList.remove('no-animations');
+            // Re-inicializar las animaciones para que los elementos ya visibles no parpadeen
+            document.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.remove('is-visible'));
+            addScrollAnimations();
         } else {
             localStorage.setItem('animationsEnabled', 'false');
             document.body.classList.add('no-animations');
-            // Quitar la clase is-visible para que la animación se pueda repetir si se reactiva
-            document.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.remove('is-visible'));
         }
     });
 
