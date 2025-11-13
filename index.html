@@ -93,6 +93,7 @@
                     <h3 class="nav-title">Comunidad</h3>
                     <ul>
                         <li><a href="#contact" class="nav-link" data-section="contact"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> Contacto y Feedback</a></li>
+                        <li><a href="#plugins" class="nav-link" data-section="plugins"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l-5.5 9h11z"/><path d="M21.2 15H2.8l9.2 9 9.2-9z"/><path d="M2.8 9h18.4L12 21 2.8 9z"/></svg> Plugins</a></li>
                         <li><a href="#settings" class="nav-link" data-section="settings"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Configuración</a></li>
                     </ul>
                 </div>
@@ -1624,6 +1625,40 @@ for i in range(1, 10) {<br>
                 </div>
             </section>
 
+            <!-- PLUGINS -->
+            <section id="plugins" class="content-section">
+                <h1><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l-5.5 9h11z"/><path d="M21.2 15H2.8l9.2 9 9.2-9z"/><path d="M2.8 9h18.4L12 21 2.8 9z"/></svg> Plugins</h1>
+                <p>Gestiona los plugins y extensiones de la documentación.</p>
+                
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <h4>Sistema de Comentarios (giscus)</h4>
+                        <p>Permite a la comunidad dejar feedback usando GitHub Discussions.</p>
+                    </div>
+                    <span class="plugin-status active">Activado</span>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <h4>Almacén de Datos Local</h4>
+                        <p>Guarda datos de configuración y estado en el navegador de forma segura (simulada).</p>
+                    </div>
+                    <span class="plugin-status active">Activado</span>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <h4>Futuro Plugin</h4>
+                        <p>Descripción de una futura extensión para la web.</p>
+                    </div>
+                    <span class="plugin-status">Desactivado</span>
+                </div>
+
+                <div class="info-box">
+                    <p>Los plugins mejoran la funcionalidad de la página. Algunos guardan datos en tu navegador usando <code>localStorage</code> para recordar tus preferencias.</p>
+                </div>
+            </section>
+
             <!-- SETTINGS -->
             <section id="settings" class="content-section">
                 <h1><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Configuración</h1>
@@ -1647,21 +1682,15 @@ for i in range(1, 10) {<br>
                     <button id="reset-rating-btn" class="setting-button">Restablecer</button>
                 </div>
 
-                <h2>Plugins</h2>
-                <p>Gestiona los plugins y extensiones de la documentación.</p>
                 <div class="setting-item">
                     <div class="setting-label">
-                        <h4>Sistema de Comentarios (giscus)</h4>
-                        <p>Permite a la comunidad dejar feedback usando GitHub Discussions.</p>
+                        <h4>Aviso de Valoración</h4>
+                        <p>Activa o desactiva el aviso emergente para valorar el lenguaje.</p>
                     </div>
-                    <span class="plugin-status active">Activado</span>
-                </div>
-                <div class="setting-item">
-                    <div class="setting-label">
-                        <h4>Futuro Plugin</h4>
-                        <p>Descripción de una futura extensión para la web.</p>
-                    </div>
-                    <span class="plugin-status">Desactivado</span>
+                    <label class="switch">
+                        <input type="checkbox" id="rating-modal-toggle" checked>
+                        <span class="slider round"></span>
+                    </label>
                 </div>
             </section>
 

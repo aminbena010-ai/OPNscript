@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initBackToTopButton();
     initRatingModal();
     initSettings();
+    initDataVault();
 });
 
 function initTheme() {
@@ -85,7 +86,7 @@ function addScrollAnimations() {
         });
     }, observerOptions);
     
-    document.querySelectorAll('.content-section h1, .content-section h2, .content-section h3, .content-section p, .content-section ul, .content-section ol, .feature-card, .code-block, .reference-table, .colors-grid, .info-box, .warning-box, .contact-button, .giscus-container, .setting-item').forEach(el => {
+    document.querySelectorAll('.content-section h1, .content-section h2, .content-section h3, .content-section p, .content-section ul, .content-section ol, .feature-card, .code-block, .reference-table, .colors-grid, .info-box, .warning-box, .contact-button, .giscus-container, .setting-item, .stats-container').forEach(el => {
         el.classList.add('animate-on-scroll');
         observer.observe(el);
     });
@@ -196,8 +197,10 @@ function initRatingModal() {
         "¡Excelente!"
     ];
 
-    // Mostrar modal después de 15 segundos, solo si el usuario no ha votado/cerrado antes.
-    if (!localStorage.getItem('opnRatingDone')) {
+    const shouldShowModal = localStorage.getItem('ratingModalDisabled') !== 'true' && !localStorage.getItem('opnRatingDone');
+
+    // Mostrar modal después de 15 segundos, si está permitido y no se ha hecho antes.
+    if (shouldShowModal) {
         setTimeout(() => {
             modal.classList.add('visible');
         }, 15000);
@@ -205,7 +208,7 @@ function initRatingModal() {
 
     closeModalBtn.addEventListener('click', () => {
         modal.classList.remove('visible');
-        // Marcar como visto para no volver a mostrarlo.
+        // Marcar como interactuado para no volver a mostrarlo.
         localStorage.setItem('opnRatingDone', 'true');
     });
 
@@ -236,7 +239,7 @@ function initRatingModal() {
             const subject = `Valoración para OPN: ${currentRating}/5 estrellas`;
             const body = `Hola,\n\nMi valoración para el lenguaje OPN es de ${currentRating} de 5 estrellas.\n\nFeedback adicional:\n`;
             window.open(`mailto:amin.bena010@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
-            // Marcar como completado y cerrar.
+            // Marcar como hecho y cerrar.
             localStorage.setItem('opnRatingDone', 'true');
             modal.classList.remove('visible');
         }
@@ -246,12 +249,16 @@ function initRatingModal() {
 function initSettings() {
     const animationsToggle = document.getElementById('animations-toggle');
     const resetRatingBtn = document.getElementById('reset-rating-btn');
+    const ratingModalToggle = document.getElementById('rating-modal-toggle');
 
     // Cargar estado de las animaciones
     const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
     animationsToggle.checked = animationsEnabled;
     if (!animationsEnabled) {
         document.body.classList.add('no-animations');
+    } else {
+        // Re-observar elementos si las animaciones se reactivan
+        addScrollAnimations();
     }
 
     animationsToggle.addEventListener('change', () => {
@@ -261,11 +268,64 @@ function initSettings() {
         } else {
             localStorage.setItem('animationsEnabled', 'false');
             document.body.classList.add('no-animations');
+            // Quitar la clase is-visible para que la animación se pueda repetir si se reactiva
+            document.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.remove('is-visible'));
         }
     });
 
     resetRatingBtn.addEventListener('click', () => {
         localStorage.removeItem('opnRatingDone');
+        localStorage.removeItem('ratingModalDisabled');
+        ratingModalToggle.checked = true;
         alert('Estado de valoración restablecido. El aviso aparecerá en tu próxima visita.');
     });
+
+    // Cargar estado del modal de valoración
+    const ratingModalDisabled = localStorage.getItem('ratingModalDisabled') === 'true';
+    ratingModalToggle.checked = !ratingModalDisabled;
+
+    ratingModalToggle.addEventListener('change', () => {
+        if (ratingModalToggle.checked) {
+            localStorage.removeItem('ratingModalDisabled');
+            alert('Aviso de valoración activado.');
+        } else {
+            localStorage.setItem('ratingModalDisabled', 'true');
+            alert('Aviso de valoración desactivado permanentemente.');
+        }
+    });
+}
+
+function initDataVault() {
+    // Simulación de un "almacén de datos"
+    const dataVault = {
+        setData: function(key, value) {
+            const jsonValue = JSON.stringify(value);
+            // "Cifrado" simple usando Base64
+            const encryptedValue = btoa(jsonValue);
+            localStorage.setItem(`vault_${key}`, encryptedValue);
+        },
+        getData: function(key) {
+            const encryptedValue = localStorage.getItem(`vault_${key}`);
+            if (!encryptedValue) return null;
+            try {
+                // "Descifrado"
+                const jsonValue = atob(encryptedValue);
+                return JSON.parse(jsonValue);
+            } catch (e) {
+                console.error("Error al descifrar los datos de la bóveda:", e);
+                return null;
+            }
+        }
+    };
+
+    // Ejemplo de uso: Guardar la última sección visitada
+    window.addEventListener('hashchange', () => {
+        const hash = window.location.hash;
+        if (hash) {
+            dataVault.setData('last_visited_section', hash);
+        }
+    });
+
+    // Puedes acceder a los datos desde la consola del navegador con:
+    // atob(localStorage.getItem('vault_last_visited_section'))
 }
