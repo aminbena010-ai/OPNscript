@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initBackToTopButton();
     initRatingModal();
     initSettings();
+    initInstallationTabs();
+    initSyntaxHighlighting();
     initDataVault();
 });
 
@@ -48,6 +50,7 @@ function initNavigation() {
             if (targetSection) {
                 targetSection.classList.add('active');
                 document.getElementById('main-content').scrollTo(0, 0);
+                scrollSidebarToActiveLink(this);
                 // Cerrar sidebar en móvil al seleccionar una sección
                 if (window.innerWidth <= 1024) {
                     sidebar.classList.remove('active');
@@ -99,6 +102,14 @@ function initNavigation() {
             menuToggle.setAttribute('aria-label', 'Abrir menú');
         });
     }
+}
+
+function scrollSidebarToActiveLink(activeLink) {
+    const sidebar = document.getElementById('sidebar-nav');
+    if (!sidebar || !activeLink) return;
+
+    const topPos = activeLink.offsetTop;
+    sidebar.scrollTo({ top: topPos - (sidebar.clientHeight / 2) + (activeLink.clientHeight / 2), behavior: 'smooth' });
 }
 
 function addScrollAnimations() {
@@ -167,9 +178,12 @@ function updateActiveSection() {
     
     let currentSection = null;
     
+    // Usa main-content para el cálculo del viewport
+    const mainContent = document.getElementById('main-content');
     sections.forEach(section => {
         const rect = section.getBoundingClientRect();
-        if (rect.top <= window.innerHeight / 2) {
+        // Considera una sección como activa si está en la mitad superior de la pantalla
+        if (rect.top <= mainContent.clientHeight / 2 && rect.bottom >= mainContent.clientHeight / 2) {
             currentSection = section.id;
         }
     });
@@ -178,6 +192,7 @@ function updateActiveSection() {
         link.classList.remove('active');
         if (link.getAttribute('data-section') === currentSection) {
             link.classList.add('active');
+            scrollSidebarToActiveLink(link);
         }
     });
 }
@@ -359,4 +374,78 @@ function initDataVault() {
 
     // Puedes acceder a los datos desde la consola del navegador con:
     // atob(localStorage.getItem('vault_last_visited_section'))
+}
+
+function initInstallationTabs() {
+    const tabButtons = document.querySelectorAll('.os-tab-btn');
+    const tabContents = document.querySelectorAll('.os-instructions-content');
+
+    if (tabButtons.length === 0 || tabContents.length === 0) return;
+
+    const activateTab = (os) => {
+        tabButtons.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.os === os);
+        });
+        tabContents.forEach(content => {
+            content.classList.toggle('active', content.dataset.os === os);
+        });
+    };
+
+    // Detectar OS y activar la pestaña correcta al cargar
+    const userAgent = window.navigator.userAgent;
+    let detectedOS;
+    if (userAgent.includes("Win")) {
+        detectedOS = "windows";
+    } else if (userAgent.includes("Mac")) {
+        detectedOS = "macos";
+    } else if (userAgent.includes("Linux")) {
+        detectedOS = "linux";
+    } else {
+        detectedOS = "windows"; // Por defecto
+    }
+    activateTab(detectedOS);
+
+    // Añadir listeners para cambio manual
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const os = button.dataset.os;
+            activateTab(os);
+        });
+    });
+}
+
+function initSyntaxHighlighting() {
+    const opnKeywords = ['let', 'set', 'if', 'else', 'for', 'in', 'func', 'return', 'main', 'true', 'false'];
+    const opnFunctions = ['py.print', 'py.input', 'py.random.randint', 'gfx.setup_canvas', 'gfx.draw_circle', 'gfx.draw_point', 'gfx.update_screen', 'gfx.get_random_color', 'c.printf', 'cpp.cout', 'cs.write_line', 'js.log', 'to_string', 'to_number', 'range'];
+
+    const highlight = (code) => {
+        return code
+            // Comments
+            .replace(/#.*$/gm, (match) => `<span class="token-comment">${match}</span>`)
+            // Strings
+            .replace(/&quot;([^&]*)&quot;/g, (match, p1) => `&quot;<span class="token-string">${p1}</span>&quot;`)
+            // Keywords
+            .replace(new RegExp(`\\b(${opnKeywords.join('|')})\\b`, 'g'), '<span class="token-keyword">$1</span>')
+            // Functions
+            .replace(new RegExp(`(${opnFunctions.join('|').replace('.', '\\.')})`, 'g'), '<span class="token-function">$1</span>')
+            // Numbers
+            .replace(/\b(\d+(\.\d+)?)\b/g, '<span class="token-number">$1</span>');
+    };
+
+    document.querySelectorAll('.code-block[data-lang="opn"] code, .code-block[data-lang="shell"] code').forEach(block => {
+        // Evitar doble resaltado
+        if (block.querySelector('.token-keyword')) return;
+
+        // Escapar HTML para procesar, excepto los <br>
+        let code = block.innerHTML
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/&lt;br&gt;/g, '<br>');
+
+        if (block.closest('[data-lang="opn"]')) {
+            block.innerHTML = highlight(code);
+        }
+    });
 }

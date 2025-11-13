@@ -20,6 +20,13 @@
     --warning: #f59e0b;
     --danger: #ef4444;
     --info: #3b82f6;
+
+    /* Syntax Highlighting */
+    --syntax-keyword: #c792ea;
+    --syntax-function: #82aaff;
+    --syntax-string: #c3e88d;
+    --syntax-number: #f78c6c;
+    --syntax-comment: #546e7a;
 }
 
 [data-theme="light"] {
@@ -34,6 +41,13 @@
     
     --border-color: #cbd5e1;
     --border-light: #e2e8f0;
+
+    /* Syntax Highlighting */
+    --syntax-keyword: #7c4dff;
+    --syntax-function: #2962ff;
+    --syntax-string: #00897b;
+    --syntax-number: #f67c55;
+    --syntax-comment: #78909c;
 }
 
 * {
@@ -476,6 +490,28 @@ code {
     line-height: 1.6;
 }
 
+.code-block::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    background-color: var(--bg-hover);
+    color: var(--text-tertiary);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 0 8px 0 8px;
+    text-transform: uppercase;
+    border-left: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.code-block[data-lang=""]::before,
+.code-block:not([data-lang])::before {
+    display: none;
+}
+
 .copy-btn {
     position: absolute;
     top: 12px;
@@ -511,6 +547,13 @@ code {
     height: 16px;
     pointer-events: none; /* Evita que el SVG interfiera con el clic */
 }
+
+/* Syntax Highlighting Styles */
+.token-keyword { color: var(--syntax-keyword); font-weight: 500; }
+.token-function { color: var(--syntax-function); }
+.token-string { color: var(--syntax-string); }
+.token-number { color: var(--syntax-number); }
+.token-comment { color: var(--syntax-comment); font-style: italic; }
 
 ul, ol {
     margin-left: 24px;
@@ -868,6 +911,50 @@ strong {
 .contact-button:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
+}
+
+.os-tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 24px;
+}
+.os-tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    color: var(--text-tertiary);
+    font-weight: 600;
+    font-size: 15px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.os-tab-btn:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-hover);
+}
+
+.os-tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.os-tab-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.os-instructions-content {
+    display: none;
+}
+
+.os-instructions-content.active {
+    display: block;
 }
 
 .contact-button svg {
