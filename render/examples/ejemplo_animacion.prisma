@@ -1,0 +1,135 @@
+# Ejemplo Avanzado - Animación OPN Render
+# Demuestra cómo crear animaciones usando el paquete render
+
+func animated_expanding_circles() {
+    gfx.setup_canvas(800, 600, "Animacion - Circulos Expandiendose");
+    
+    let frame = 0;
+    let center_x = 400;
+    let center_y = 300;
+    
+    for frame in 1..100 {
+        let radius = 10 + frame;
+        
+        gfx.draw_circle(center_x, center_y, radius, "Rojo");
+        gfx.draw_circle(center_x, center_y, radius + 20, "Verde");
+        gfx.draw_circle(center_x, center_y, radius + 40, "Azul");
+        
+        gfx.update_screen();
+    }
+}
+
+func animated_bouncing_shapes() {
+    gfx.setup_canvas(800, 600, "Animacion - Formas Rebotando");
+    
+    let x1 = 100;
+    let y1 = 100;
+    let vx1 = 4;
+    let vy1 = 3;
+    
+    let x2 = 700;
+    let y2 = 500;
+    let vx2 = -3;
+    let vy2 = -4;
+    
+    let frame = 0;
+    
+    for frame in 1..200 {
+        x1 = x1 + vx1;
+        y1 = y1 + vy1;
+        
+        x2 = x2 + vx2;
+        y2 = y2 + vy2;
+        
+        if x1 <= 50 {
+            vx1 = 4;
+        } else {
+            if x1 >= 750 {
+                vx1 = -4;
+            }
+        }
+        
+        if y1 <= 50 {
+            vy1 = 3;
+        } else {
+            if y1 >= 550 {
+                vy1 = -3;
+            }
+        }
+        
+        if x2 <= 50 {
+            vx2 = 3;
+        } else {
+            if x2 >= 750 {
+                vx2 = -3;
+            }
+        }
+        
+        if y2 <= 50 {
+            vy2 = 4;
+        } else {
+            if y2 >= 550 {
+                vy2 = -4;
+            }
+        }
+        
+        gfx.draw_circle(x1, y1, 15, "Púrpura");
+        gfx.draw_circle(x2, y2, 15, "Cian");
+        
+        gfx.update_screen();
+    }
+}
+
+func animated_rotating_pattern() {
+    gfx.setup_canvas(800, 600, "Animacion - Patron Rotatorio");
+    
+    let frame = 0;
+    let center_x = 400;
+    let center_y = 300;
+    let distance = 100;
+    
+    for frame in 1..150 {
+        let offset = frame * 2;
+        
+        let x1 = center_x + distance;
+        let y1 = center_y;
+        
+        let x2 = center_x - distance;
+        let y2 = center_y;
+        
+        let x3 = center_x;
+        let y3 = center_y + distance;
+        
+        let x4 = center_x;
+        let y4 = center_y - distance;
+        
+        gfx.draw_circle(x1, y1, 10, "Rojo");
+        gfx.draw_circle(x2, y2, 10, "Verde");
+        gfx.draw_circle(x3, y3, 10, "Azul");
+        gfx.draw_circle(x4, y4, 10, "Amarillo");
+        
+        gfx.update_screen();
+    }
+}
+
+func animated_trail_effect() {
+    gfx.setup_canvas(800, 600, "Animacion - Efecto de Estela");
+    
+    let frame = 0;
+    
+    for frame in 1..200 {
+        let step = 0;
+        
+        for step in 1..30 {
+            let x = 100 + frame + step;
+            let y = 300 + step;
+            gfx.draw_point(x, y, "Blanco");
+        }
+        
+        gfx.update_screen();
+    }
+}
+
+main {
+    animated_expanding_circles();
+}

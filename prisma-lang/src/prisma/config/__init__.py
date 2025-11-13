@@ -1,0 +1,15 @@
+from .aliases import CALL_ALIASES, TYPE_ALIASES
+from .keywords import KEYWORDS, OPERATORS, BUILTINS, GFX_FUNCTIONS, GFX_COLORS
+from .colors import SYNTAX_COLORS, THEME_COLORS
+
+__all__ = [
+    'CALL_ALIASES',
+    'TYPE_ALIASES',
+    'KEYWORDS',
+    'OPERATORS',
+    'BUILTINS',
+    'GFX_FUNCTIONS',
+    'GFX_COLORS',
+    'SYNTAX_COLORS',
+    'THEME_COLORS'
+]

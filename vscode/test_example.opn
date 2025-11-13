@@ -1,0 +1,23 @@
+# Ejemplo completo de OPN
+# Prueba de auto-indentation, auto-closing, y sintaxis
+
+func saludar(nombre) {
+    return "Hola, " + nombre;
+}
+
+main {
+    let numero = 42;
+    let mensaje = "Bienvenido a OPN";
+    let lista = [1, 2, 3, 4, 5];
+    
+    if numero > 10 {
+        py.print(mensaje);
+        py.print(saludar("Usuario"));
+    } else {
+        py.print("Numero muy pequeno");
+    }
+    
+    for i in 1..5 {
+        py.print(i);
+    }
+}

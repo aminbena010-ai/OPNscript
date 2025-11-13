@@ -1,0 +1,90 @@
+# Ejemplo Básico - Paquete OPN Render
+# Demuestra cómo usar el paquete render para crear gráficos
+
+func demo_shapes() {
+    gfx.setup_canvas(800, 600, "Ejemplo OPN Render - Formas");
+    
+    gfx.draw_circle(100, 100, 30, "Rojo");
+    gfx.draw_circle(200, 100, 40, "Verde");
+    gfx.draw_circle(300, 100, 35, "Azul");
+    
+    gfx.draw_point(100, 200, "Amarillo");
+    gfx.draw_point(150, 200, "Púrpura");
+    gfx.draw_point(200, 200, "Cian");
+    
+    gfx.update_screen();
+}
+
+func demo_patterns() {
+    gfx.setup_canvas(800, 600, "Ejemplo OPN Render - Patrones");
+    
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..10 {
+        for col in 1..10 {
+            let x = 100 + col * 30;
+            let y = 100 + row * 30;
+            gfx.draw_circle(x, y, 10, "Verde");
+        }
+    }
+    
+    gfx.update_screen();
+}
+
+func demo_circles() {
+    gfx.setup_canvas(800, 600, "Ejemplo OPN Render - Circulos Concentricos");
+    
+    let i = 0;
+    
+    for i in 1..8 {
+        let radius = i * 25;
+        gfx.draw_circle(400, 300, radius, "Rojo");
+    }
+    
+    gfx.update_screen();
+}
+
+func demo_crosses() {
+    gfx.setup_canvas(800, 600, "Ejemplo OPN Render - Cruces");
+    
+    let x_pos = 100;
+    let y_pos = 100;
+    let i = 0;
+    
+    for i in 1..5 {
+        let size = i * 20;
+        let x = x_pos + i * 120;
+        let y = y_pos;
+        
+        gfx.draw_point(x, y, "Blanco");
+        gfx.draw_point(x + size, y, "Blanco");
+        gfx.draw_point(x - size, y, "Blanco");
+        gfx.draw_point(x, y + size, "Blanco");
+        gfx.draw_point(x, y - size, "Blanco");
+    }
+    
+    gfx.update_screen();
+}
+
+func demo_grid() {
+    gfx.setup_canvas(800, 600, "Ejemplo OPN Render - Cuadricula");
+    
+    let x = 0;
+    let y = 0;
+    let spacing = 50;
+    let count = 0;
+    
+    for count in 1..15 {
+        let xpos = 50 + count * spacing;
+        let ypos = 50 + count * spacing;
+        gfx.draw_point(xpos, 50, "Azul");
+        gfx.draw_point(50, ypos, "Azul");
+    }
+    
+    gfx.update_screen();
+}
+
+main {
+    demo_shapes();
+}

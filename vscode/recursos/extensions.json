@@ -1,0 +1,14 @@
+{
+  "default_id": "opn",
+  "mappings": {
+    "opn": "opn",
+    "opn4": "opn",
+    "prisma": "opn",
+    "py": "python",
+    "js": "javascript",
+    "jsx": "javascript",
+    "ts": "javascript",
+    "tsx": "javascript",
+    "txt": "text"
+  }
+}

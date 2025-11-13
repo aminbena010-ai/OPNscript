@@ -1,0 +1,574 @@
+# OPN Render Package - Main Compiler and Entry Point
+# Consolidates all graphics functions from all submodules
+# Users can import this single file to access all rendering capabilities
+
+# ============================================
+# CORE RENDERING - BASIC SHAPES
+# ============================================
+
+func draw_point(x, y, color) {
+    gfx.draw_point(x, y, color);
+}
+
+func draw_circle(x, y, radius, color) {
+    gfx.draw_circle(x, y, radius, color);
+}
+
+func draw_square(x, y, size, color) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..size {
+        for col in 1..size {
+            gfx.draw_point(x + col, y + row, color);
+        }
+    }
+}
+
+func draw_rectangle(x, y, width, height, color) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..height {
+        for col in 1..width {
+            gfx.draw_point(x + col, y + row, color);
+        }
+    }
+}
+
+# ============================================
+# CORE COLORS
+# ============================================
+
+func color_red() {
+    return "Rojo";
+}
+
+func color_green() {
+    return "Verde";
+}
+
+func color_blue() {
+    return "Azul";
+}
+
+func color_yellow() {
+    return "Amarillo";
+}
+
+func color_purple() {
+    return "Púrpura";
+}
+
+func color_cyan() {
+    return "Cian";
+}
+
+func color_white() {
+    return "Blanco";
+}
+
+func color_black() {
+    return "Negro";
+}
+
+# ============================================
+# CORE UTILITIES
+# ============================================
+
+func init_render(width, height, title) {
+    gfx.setup_canvas(width, height, title);
+}
+
+func update_render() {
+    gfx.update_screen();
+}
+
+func draw_border(x, y, width, height, color) {
+    let i = 0;
+    
+    for i in 1..width {
+        gfx.draw_point(x + i, y, color);
+        gfx.draw_point(x + i, y + height, color);
+    }
+    
+    for i in 1..height {
+        gfx.draw_point(x, y + i, color);
+        gfx.draw_point(x + width, y + i, color);
+    }
+}
+
+func draw_grid_cells(start_x, start_y, cell_size, rows, cols, color) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..rows {
+        for col in 1..cols {
+            let x = start_x + col * cell_size;
+            let y = start_y + row * cell_size;
+            gfx.draw_point(x, y, color);
+        }
+    }
+}
+
+func draw_concentric(center_x, center_y, num_circles, spacing, color) {
+    let i = 0;
+    
+    for i in 1..num_circles {
+        let radius = i * spacing;
+        gfx.draw_circle(center_x, center_y, radius, color);
+    }
+}
+
+func draw_stars(center_x, center_y, num_points, distance, color) {
+    let i = 0;
+    
+    for i in 1..num_points {
+        let x = center_x + distance;
+        let y = center_y + i * 10;
+        gfx.draw_point(x, y, color);
+    }
+}
+
+# ============================================
+# CORE ANIMATIONS
+# ============================================
+
+func animate_expand(center_x, center_y, color, max_frames) {
+    let frame = 0;
+    
+    for frame in 1..max_frames {
+        let radius = 10 + frame;
+        gfx.draw_circle(center_x, center_y, radius, color);
+        gfx.update_screen();
+    }
+}
+
+func animate_pulse(center_x, center_y, color, num_pulses) {
+    let pulse = 0;
+    
+    for pulse in 1..num_pulses {
+        gfx.draw_circle(center_x, center_y, 20, color);
+        gfx.draw_circle(center_x, center_y, 40, color);
+        gfx.draw_circle(center_x, center_y, 60, color);
+        gfx.update_screen();
+    }
+}
+
+func animate_trail(start_x, start_y, color, num_frames) {
+    let frame = 0;
+    
+    for frame in 1..num_frames {
+        let x = start_x + frame * 2;
+        let y = start_y + frame;
+        gfx.draw_circle(x, y, 10, color);
+        gfx.update_screen();
+    }
+}
+
+# ============================================
+# CORE INFO
+# ============================================
+
+func get_render_version() {
+    return "OPN Render v1.0.0";
+}
+
+func get_render_info() {
+    return "Motor Grafico 2D para OPN - Sin dependencias externas";
+}
+
+# ============================================
+# SHAPES MODULE - GEOMETRIC SHAPES
+# ============================================
+
+func draw_point_basic(x, y, color) {
+    gfx.draw_point(x, y, color);
+}
+
+func draw_circle_basic(x, y, radius, color) {
+    gfx.draw_circle(x, y, radius, color);
+}
+
+func draw_square_filled(x, y, size, color) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..size {
+        for col in 1..size {
+            gfx.draw_point(x + col, y + row, color);
+        }
+    }
+}
+
+func draw_rectangle_filled(x, y, width, height, color) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..height {
+        for col in 1..width {
+            gfx.draw_point(x + col, y + row, color);
+        }
+    }
+}
+
+func draw_horizontal_line(x1, x2, y, color) {
+    let i = 0;
+    for i in 0..100 {
+        let px = x1 + i;
+        if px <= x2 {
+            gfx.draw_point(px, y, color);
+        }
+    }
+}
+
+func draw_vertical_line(x, y1, y2, color) {
+    let i = 0;
+    for i in 0..100 {
+        let py = y1 + i;
+        if py <= y2 {
+            gfx.draw_point(x, py, color);
+        }
+    }
+}
+
+func draw_circle_outline(x, y, radius, color) {
+    let i = 0;
+    for i in 1..8 {
+        gfx.draw_circle(x, y, radius, color);
+    }
+}
+
+func draw_grid_pattern(start_x, start_y, width, height, cell_size, color) {
+    let i = 0;
+    for i in 0..10 {
+        let x = start_x + i * cell_size;
+        let y = start_y + i * cell_size;
+        gfx.draw_point(x, y, color);
+    }
+}
+
+func draw_concentric_circles(x, y, num_circles, spacing, color) {
+    let i = 0;
+    for i in 1..num_circles {
+        let radius = i * spacing;
+        gfx.draw_circle(x, y, radius, color);
+    }
+}
+
+func draw_diamond(x, y, size, color) {
+    let i = 0;
+    for i in 1..size {
+        gfx.draw_point(x + i, y, color);
+        gfx.draw_point(x - i, y, color);
+        gfx.draw_point(x, y + i, color);
+        gfx.draw_point(x, y - i, color);
+    }
+}
+
+# ============================================
+# COLORS MODULE - COLOR MANAGEMENT
+# ============================================
+
+func get_primary_red() {
+    return "Rojo";
+}
+
+func get_primary_green() {
+    return "Verde";
+}
+
+func get_primary_blue() {
+    return "Azul";
+}
+
+func get_primary_yellow() {
+    return "Amarillo";
+}
+
+func get_primary_purple() {
+    return "Púrpura";
+}
+
+func get_primary_cyan() {
+    return "Cian";
+}
+
+func get_neutral_white() {
+    return "Blanco";
+}
+
+func get_neutral_black() {
+    return "Negro";
+}
+
+func get_color_palette_neon(index) {
+    let color = "Rojo";
+    
+    if index == 1 {
+        color = "Rojo";
+    } else {
+        if index == 2 {
+            color = "Verde";
+        } else {
+            if index == 3 {
+                color = "Azul";
+            } else {
+                if index == 4 {
+                    color = "Amarillo";
+                } else {
+                    if index == 5 {
+                        color = "Púrpura";
+                    } else {
+                        if index == 6 {
+                            color = "Cian";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    return color;
+}
+
+func is_dark_color(color_name) {
+    let is_dark = false;
+    
+    if color_name == "Negro" {
+        is_dark = true;
+    } else {
+        if color_name == "Azul" {
+            is_dark = true;
+        }
+    }
+    
+    return is_dark;
+}
+
+func is_light_color(color_name) {
+    let is_light = false;
+    
+    if color_name == "Blanco" {
+        is_light = true;
+    } else {
+        if color_name == "Amarillo" {
+            is_light = true;
+        } else {
+            if color_name == "Cian" {
+                is_light = true;
+            }
+        }
+    }
+    
+    return is_light;
+}
+
+# ============================================
+# EFFECTS MODULE - VISUAL EFFECTS
+# ============================================
+
+func fade_effect_circles(x, y, color, frames) {
+    let frame = 0;
+    
+    for frame in 1..frames {
+        let radius = 10 + frame * 2;
+        gfx.draw_circle(x, y, radius, color);
+        gfx.update_screen();
+    }
+}
+
+func pulse_effect(x, y, color, num_pulses) {
+    let pulse = 0;
+    let radius = 10;
+    
+    for pulse in 1..num_pulses {
+        gfx.draw_circle(x, y, radius, color);
+        gfx.draw_circle(x, y, radius + 10, color);
+        gfx.draw_circle(x, y, radius + 20, color);
+        gfx.update_screen();
+        radius = radius + 5;
+    }
+}
+
+func spiral_effect(center_x, center_y, color, num_points) {
+    let i = 0;
+    
+    for i in 1..num_points {
+        let x = center_x + i * 5;
+        let y = center_y + i * 3;
+        gfx.draw_point(x, y, color);
+    }
+}
+
+func rain_effect(color, num_drops) {
+    let drop = 0;
+    let frame = 0;
+    
+    for frame in 1..50 {
+        for drop in 1..num_drops {
+            let x = 100 + drop * 50;
+            let y = 50 + frame * 5;
+            gfx.draw_point(x, y, color);
+        }
+        gfx.update_screen();
+    }
+}
+
+func wave_effect(center_y, color, amplitude, num_waves) {
+    let wave = 0;
+    let i = 0;
+    
+    for wave in 1..num_waves {
+        for i in 1..15 {
+            let x = 50 + i * 40;
+            let y = center_y + wave * 20;
+            gfx.draw_point(x, y, color);
+        }
+    }
+}
+
+func strobe_effect(x, y, radius, color, num_flashes) {
+    let flash = 0;
+    
+    for flash in 1..num_flashes {
+        gfx.draw_circle(x, y, radius, color);
+        gfx.update_screen();
+    }
+}
+
+func trail_effect(start_x, start_y, end_x, end_y, color, num_steps) {
+    let step = 0;
+    
+    for step in 1..num_steps {
+        let x = start_x + step * 3;
+        let y = start_y + step * 2;
+        gfx.draw_point(x, y, color);
+    }
+}
+
+func rotation_effect(center_x, center_y, radius, color, num_rotations) {
+    let rot = 0;
+    
+    for rot in 1..num_rotations {
+        let x = center_x + radius;
+        let y = center_y;
+        gfx.draw_point(x, y, color);
+        gfx.draw_point(x - radius, y, color);
+        gfx.draw_point(center_x, y + radius, color);
+        gfx.draw_point(center_x, y - radius, color);
+    }
+}
+
+# ============================================
+# UTILS MODULE - UTILITY FUNCTIONS
+# ============================================
+
+func init_canvas_default() {
+    gfx.setup_canvas(800, 600, "OPN Render Engine");
+}
+
+func init_canvas_custom(width, height, title) {
+    gfx.setup_canvas(width, height, title);
+}
+
+func clear_screen() {
+    gfx.update_screen();
+}
+
+func draw_border_rectangle(x, y, width, height, color) {
+    let i = 0;
+    
+    for i in 1..width {
+        gfx.draw_point(x + i, y, color);
+        gfx.draw_point(x + i, y + height, color);
+    }
+    
+    for i in 1..height {
+        gfx.draw_point(x, y + i, color);
+        gfx.draw_point(x + width, y + i, color);
+    }
+}
+
+func draw_cross_marker(x, y, size, color) {
+    let i = 0;
+    
+    for i in 1..size {
+        gfx.draw_point(x + i, y, color);
+        gfx.draw_point(x - i, y, color);
+        gfx.draw_point(x, y + i, color);
+        gfx.draw_point(x, y - i, color);
+    }
+}
+
+func draw_grid(grid_x, grid_y, grid_width, grid_height, cell_size, color) {
+    let row = 0;
+    let col = 0;
+    let max_rows = 20;
+    let max_cols = 20;
+    
+    for row in 1..max_rows {
+        for col in 1..max_cols {
+            let x = grid_x + col * cell_size;
+            let y = grid_y + row * cell_size;
+            gfx.draw_point(x, y, color);
+        }
+    }
+}
+
+func fill_rect_pattern(x, y, width, height, color, pattern_size) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 0..20 {
+        for col in 0..20 {
+            let px = x + row * pattern_size;
+            let py = y + col * pattern_size;
+            gfx.draw_point(px, py, color);
+        }
+    }
+}
+
+func draw_axis(x, y, size, color_x, color_y) {
+    let i = 0;
+    
+    for i in 0..20 {
+        gfx.draw_point(x + i, y, color_x);
+        gfx.draw_point(x, y + i, color_y);
+    }
+}
+
+func calculate_distance(x1, y1, x2, y2) {
+    let dx = x2 - x1;
+    let dy = y2 - y1;
+    let dist = dx + dy;
+    return dist;
+}
+
+func clamp_coordinate(value, min_val, max_val) {
+    let result = value;
+    
+    if value < min_val {
+        result = min_val;
+    } else {
+        if value > max_val {
+            result = max_val;
+        }
+    }
+    
+    return result;
+}
+
+func wrap_coordinate(value, max_val) {
+    let result = value;
+    
+    if value >= max_val {
+        result = value - max_val;
+    } else {
+        if value < 0 {
+            result = value + max_val;
+        }
+    }
+    
+    return result;
+}

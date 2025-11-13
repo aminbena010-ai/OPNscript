@@ -1,0 +1,142 @@
+# Demo Completo - Paquete OPN Render
+# Demuestra todas las capacidades del motor gráfico 2D
+
+func demo_scene_1() {
+    gfx.setup_canvas(800, 600, "OPN Render - Demo 1: Formas");
+    
+    gfx.draw_circle(100, 100, 40, "Rojo");
+    gfx.draw_circle(100, 100, 20, "Blanco");
+    
+    gfx.draw_circle(300, 150, 50, "Verde");
+    gfx.draw_circle(500, 100, 60, "Azul");
+    
+    gfx.update_screen();
+}
+
+func demo_scene_2() {
+    gfx.setup_canvas(800, 600, "OPN Render - Demo 2: Patrones");
+    
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..12 {
+        for col in 1..16 {
+            let x = 50 + col * 40;
+            let y = 50 + row * 40;
+            
+            if row == 1 {
+                gfx.draw_circle(x, y, 15, "Rojo");
+            } else {
+                if row == 2 {
+                    gfx.draw_circle(x, y, 15, "Verde");
+                } else {
+                    if row == 3 {
+                        gfx.draw_circle(x, y, 15, "Azul");
+                    } else {
+                        if row == 4 {
+                            gfx.draw_circle(x, y, 15, "Amarillo");
+                        } else {
+                            if row == 5 {
+                                gfx.draw_circle(x, y, 15, "Púrpura");
+                            } else {
+                                if row == 6 {
+                                    gfx.draw_circle(x, y, 15, "Cian");
+                                } else {
+                                    gfx.draw_circle(x, y, 15, "Blanco");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    gfx.update_screen();
+}
+
+func demo_scene_3() {
+    gfx.setup_canvas(800, 600, "OPN Render - Demo 3: Concentricos");
+    
+    let i = 0;
+    let center_x = 400;
+    let center_y = 300;
+    
+    for i in 1..10 {
+        let radius = i * 30;
+        gfx.draw_circle(center_x, center_y, radius, "Rojo");
+    }
+    
+    gfx.update_screen();
+}
+
+func demo_scene_4() {
+    gfx.setup_canvas(800, 600, "OPN Render - Demo 4: Efectos");
+    
+    let i = 0;
+    
+    for i in 1..8 {
+        let x = 100 + i * 80;
+        let y = 150;
+        let radius = i * 15;
+        gfx.draw_circle(x, y, radius, "Verde");
+    }
+    
+    for i in 1..6 {
+        let x = 150;
+        let y = 400 + i * 30;
+        gfx.draw_point(x, y, "Azul");
+        gfx.draw_point(x + 20, y, "Azul");
+        gfx.draw_point(x + 40, y, "Azul");
+    }
+    
+    gfx.update_screen();
+}
+
+func demo_animation() {
+    gfx.setup_canvas(800, 600, "OPN Render - Animacion: Ondas");
+    
+    let frame = 0;
+    
+    for frame in 1..100 {
+        let wave_y = 200 + frame;
+        
+        let i = 0;
+        for i in 1..10 {
+            let x = 100 + i * 60;
+            gfx.draw_point(x, wave_y, "Púrpura");
+            gfx.draw_point(x, wave_y + 100, "Púrpura");
+        }
+        
+        gfx.draw_circle(400, 300, 20 + frame, "Cian");
+        
+        gfx.update_screen();
+    }
+}
+
+func show_menu() {
+    gfx.setup_canvas(800, 600, "OPN Render - Menu");
+    
+    gfx.draw_circle(400, 100, 60, "Rojo");
+    gfx.draw_circle(400, 100, 40, "Verde");
+    gfx.draw_circle(400, 100, 20, "Azul");
+    
+    let i = 0;
+    for i in 1..8 {
+        let x = 150 + i * 70;
+        gfx.draw_circle(x, 300, 30, "Amarillo");
+    }
+    
+    for i in 1..6 {
+        let y = 450 + i * 20;
+        gfx.draw_point(100, y, "Blanco");
+        gfx.draw_point(200, y, "Blanco");
+        gfx.draw_point(300, y, "Blanco");
+    }
+    
+    gfx.update_screen();
+}
+
+main {
+    demo_scene_1();
+}

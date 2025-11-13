@@ -1,0 +1,94 @@
+# Paquete OPN Render - Módulo Effects
+# Efectos visuales y animaciones
+
+func fade_effect_circles(x, y, color, frames) {
+    let frame = 0;
+    
+    for frame in 1..frames {
+        let radius = 10 + frame * 2;
+        gfx.draw_circle(x, y, radius, color);
+        gfx.update_screen();
+    }
+}
+
+func pulse_effect(x, y, color, num_pulses) {
+    let pulse = 0;
+    let radius = 10;
+    
+    for pulse in 1..num_pulses {
+        gfx.draw_circle(x, y, radius, color);
+        gfx.draw_circle(x, y, radius + 10, color);
+        gfx.draw_circle(x, y, radius + 20, color);
+        gfx.update_screen();
+        radius = radius + 5;
+    }
+}
+
+func spiral_effect(center_x, center_y, color, num_points) {
+    let i = 0;
+    
+    for i in 1..num_points {
+        let x = center_x + i * 5;
+        let y = center_y + i * 3;
+        gfx.draw_point(x, y, color);
+    }
+}
+
+func rain_effect(color, num_drops) {
+    let drop = 0;
+    let frame = 0;
+    
+    for frame in 1..50 {
+        for drop in 1..num_drops {
+            let x = 100 + drop * 50;
+            let y = 50 + frame * 5;
+            gfx.draw_point(x, y, color);
+        }
+        gfx.update_screen();
+    }
+}
+
+func wave_effect(center_y, color, amplitude, num_waves) {
+    let wave = 0;
+    let i = 0;
+    
+    for wave in 1..num_waves {
+        for i in 1..15 {
+            let x = 50 + i * 40;
+            let y = center_y + wave * 20;
+            gfx.draw_point(x, y, color);
+        }
+    }
+}
+
+func strobe_effect(x, y, radius, color, num_flashes) {
+    let flash = 0;
+    
+    for flash in 1..num_flashes {
+        gfx.draw_circle(x, y, radius, color);
+        gfx.update_screen();
+    }
+}
+
+func trail_effect(start_x, start_y, end_x, end_y, color, num_steps) {
+    let step = 0;
+    
+    for step in 1..num_steps {
+        let x = start_x + step * 3;
+        let y = start_y + step * 2;
+        gfx.draw_point(x, y, color);
+    }
+}
+
+func rotation_effect(center_x, center_y, radius, color, num_rotations) {
+    let rot = 0;
+    
+    for rot in 1..num_rotations {
+        let x = center_x + radius;
+        let y = center_y;
+        gfx.draw_point(x, y, color);
+        gfx.draw_point(x - radius, y, color);
+        gfx.draw_point(center_x, y + radius, color);
+        gfx.draw_point(center_x, y - radius, color);
+    }
+}

@@ -1,0 +1,183 @@
+# OPN Render - Motor Gráfico 2D
+# Archivo principal del paquete render
+# Incluye todas las funcionalidades de renderizado para OPN
+
+# ============================================
+# FORMAS GEOMÉTRICAS BÁSICAS
+# ============================================
+
+func draw_point(x, y, color) {
+    gfx.draw_point(x, y, color);
+}
+
+func draw_circle(x, y, radius, color) {
+    gfx.draw_circle(x, y, radius, color);
+}
+
+func draw_square(x, y, size, color) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..size {
+        for col in 1..size {
+            gfx.draw_point(x + col, y + row, color);
+        }
+    }
+}
+
+func draw_rectangle(x, y, width, height, color) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..height {
+        for col in 1..width {
+            gfx.draw_point(x + col, y + row, color);
+        }
+    }
+}
+
+# ============================================
+# COLORES
+# ============================================
+
+func color_red() {
+    return "Rojo";
+}
+
+func color_green() {
+    return "Verde";
+}
+
+func color_blue() {
+    return "Azul";
+}
+
+func color_yellow() {
+    return "Amarillo";
+}
+
+func color_purple() {
+    return "Púrpura";
+}
+
+func color_cyan() {
+    return "Cian";
+}
+
+func color_white() {
+    return "Blanco";
+}
+
+func color_black() {
+    return "Negro";
+}
+
+# ============================================
+# UTILIDADES
+# ============================================
+
+func init_render(width, height, title) {
+    gfx.setup_canvas(width, height, title);
+}
+
+func update_render() {
+    gfx.update_screen();
+}
+
+func draw_border(x, y, width, height, color) {
+    let i = 0;
+    
+    for i in 1..width {
+        gfx.draw_point(x + i, y, color);
+        gfx.draw_point(x + i, y + height, color);
+    }
+    
+    for i in 1..height {
+        gfx.draw_point(x, y + i, color);
+        gfx.draw_point(x + width, y + i, color);
+    }
+}
+
+# ============================================
+# PATRONES Y EFECTOS
+# ============================================
+
+func draw_grid_cells(start_x, start_y, cell_size, rows, cols, color) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..rows {
+        for col in 1..cols {
+            let x = start_x + col * cell_size;
+            let y = start_y + row * cell_size;
+            gfx.draw_point(x, y, color);
+        }
+    }
+}
+
+func draw_concentric(center_x, center_y, num_circles, spacing, color) {
+    let i = 0;
+    
+    for i in 1..num_circles {
+        let radius = i * spacing;
+        gfx.draw_circle(center_x, center_y, radius, color);
+    }
+}
+
+func draw_stars(center_x, center_y, num_points, distance, color) {
+    let i = 0;
+    
+    for i in 1..num_points {
+        let x = center_x + distance;
+        let y = center_y + i * 10;
+        gfx.draw_point(x, y, color);
+    }
+}
+
+# ============================================
+# ANIMACIONES BÁSICAS
+# ============================================
+
+func animate_expand(center_x, center_y, color, max_frames) {
+    let frame = 0;
+    
+    for frame in 1..max_frames {
+        let radius = 10 + frame;
+        gfx.draw_circle(center_x, center_y, radius, color);
+        gfx.update_screen();
+    }
+}
+
+func animate_pulse(center_x, center_y, color, num_pulses) {
+    let pulse = 0;
+    
+    for pulse in 1..num_pulses {
+        gfx.draw_circle(center_x, center_y, 20, color);
+        gfx.draw_circle(center_x, center_y, 40, color);
+        gfx.draw_circle(center_x, center_y, 60, color);
+        gfx.update_screen();
+    }
+}
+
+func animate_trail(start_x, start_y, color, num_frames) {
+    let frame = 0;
+    
+    for frame in 1..num_frames {
+        let x = start_x + frame * 2;
+        let y = start_y + frame;
+        gfx.draw_circle(x, y, 10, color);
+        gfx.update_screen();
+    }
+}
+
+# ============================================
+# INFORMACIÓN Y VERSIÓN
+# ============================================
+
+func get_render_version() {
+    return "OPN Render v1.0.0";
+}
+
+func get_render_info() {
+    return "Motor Grafico 2D para OPN - Sin dependencias externas";
+}

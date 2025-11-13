@@ -1,0 +1,138 @@
+{
+  "opn": {
+    "main": {
+      "body": "main {\n    $0\n}",
+      "description": "Bloque principal del programa",
+      "scope": "global"
+    },
+    "func": {
+      "body": "func $1($2) {\n    $0\n}",
+      "description": "Declarar una función",
+      "scope": "global"
+    },
+    "if": {
+      "body": "if $1 {\n    $0\n}",
+      "description": "Condicional if",
+      "scope": "any"
+    },
+    "ifelse": {
+      "body": "if $1 {\n    $0\n} else {\n    \n}",
+      "description": "Condicional if-else",
+      "scope": "any"
+    },
+    "for": {
+      "body": "for $1 in $2 {\n    $0\n}",
+      "description": "Bucle for en colección",
+      "scope": "any"
+    },
+    "let": {
+      "body": "let $1 = $0;",
+      "description": "Declarar variable",
+      "scope": "any"
+    },
+    "set": {
+      "body": "set $1 = $0;",
+      "description": "Asignar valor a variable",
+      "scope": "any"
+    },
+    "return": {
+      "body": "return $0;",
+      "description": "Retornar valor",
+      "scope": "function"
+    },
+    "print": {
+      "body": "py.print($0);",
+      "description": "Imprimir en consola",
+      "scope": "any"
+    },
+    "input": {
+      "body": "py.input($0);",
+      "description": "Leer entrada del usuario",
+      "scope": "any"
+    }
+  },
+  "python": {
+    "def": {
+      "body": "def $1($2):\n    $0",
+      "description": "Definir función",
+      "scope": "global"
+    },
+    "class": {
+      "body": "class $1:\n    def __init__(self):\n        $0",
+      "description": "Definir clase",
+      "scope": "global"
+    },
+    "if": {
+      "body": "if $1:\n    $0",
+      "description": "Condicional if",
+      "scope": "any"
+    },
+    "for": {
+      "body": "for $1 in $2:\n    $0",
+      "description": "Bucle for",
+      "scope": "any"
+    },
+    "while": {
+      "body": "while $1:\n    $0",
+      "description": "Bucle while",
+      "scope": "any"
+    },
+    "try": {
+      "body": "try:\n    $0\nexcept Exception as e:\n    print(e)",
+      "description": "Try-except",
+      "scope": "any"
+    },
+    "import": {
+      "body": "import $0",
+      "description": "Importar módulo",
+      "scope": "global"
+    },
+    "from": {
+      "body": "from $1 import $0",
+      "description": "Importar desde módulo",
+      "scope": "global"
+    }
+  },
+  "javascript": {
+    "function": {
+      "body": "function $1($2) {\n    $0\n}",
+      "description": "Definir función",
+      "scope": "global"
+    },
+    "const": {
+      "body": "const $1 = $0;",
+      "description": "Constante",
+      "scope": "any"
+    },
+    "let": {
+      "body": "let $1 = $0;",
+      "description": "Variable local",
+      "scope": "any"
+    },
+    "if": {
+      "body": "if ($1) {\n    $0\n}",
+      "description": "Condicional if",
+      "scope": "any"
+    },
+    "for": {
+      "body": "for (let $1 = 0; $1 < $2; $1++) {\n    $0\n}",
+      "description": "Bucle for",
+      "scope": "any"
+    },
+    "arrow": {
+      "body": "const $1 = ($2) => {\n    $0\n};",
+      "description": "Función flecha",
+      "scope": "global"
+    },
+    "class": {
+      "body": "class $1 {\n    constructor() {\n        $0\n    }\n}",
+      "description": "Definir clase",
+      "scope": "global"
+    },
+    "async": {
+      "body": "async function $1($2) {\n    $0\n}",
+      "description": "Función asíncrona",
+      "scope": "global"
+    }
+  }
+}

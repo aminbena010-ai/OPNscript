@@ -1,0 +1,111 @@
+# Paquete OPN Render - Módulo Utils
+# Funciones utilitarias para renderizado
+
+func init_canvas_default() {
+    gfx.setup_canvas(800, 600, "OPN Render Engine");
+}
+
+func init_canvas_custom(width, height, title) {
+    gfx.setup_canvas(width, height, title);
+}
+
+func clear_screen() {
+    gfx.update_screen();
+}
+
+func draw_border_rectangle(x, y, width, height, color) {
+    let i = 0;
+    
+    for i in 1..width {
+        gfx.draw_point(x + i, y, color);
+        gfx.draw_point(x + i, y + height, color);
+    }
+    
+    for i in 1..height {
+        gfx.draw_point(x, y + i, color);
+        gfx.draw_point(x + width, y + i, color);
+    }
+}
+
+func draw_cross_marker(x, y, size, color) {
+    let i = 0;
+    
+    for i in 1..size {
+        gfx.draw_point(x + i, y, color);
+        gfx.draw_point(x - i, y, color);
+        gfx.draw_point(x, y + i, color);
+        gfx.draw_point(x, y - i, color);
+    }
+}
+
+func draw_grid(grid_x, grid_y, grid_width, grid_height, cell_size, color) {
+    let row = 0;
+    let col = 0;
+    let max_rows = 20;
+    let max_cols = 20;
+    
+    for row in 1..max_rows {
+        for col in 1..max_cols {
+            let x = grid_x + col * cell_size;
+            let y = grid_y + row * cell_size;
+            gfx.draw_point(x, y, color);
+        }
+    }
+}
+
+func fill_rect_pattern(x, y, width, height, color, pattern_size) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 0..20 {
+        for col in 0..20 {
+            let px = x + row * pattern_size;
+            let py = y + col * pattern_size;
+            gfx.draw_point(px, py, color);
+        }
+    }
+}
+
+func draw_axis(x, y, size, color_x, color_y) {
+    let i = 0;
+    
+    for i in 0..20 {
+        gfx.draw_point(x + i, y, color_x);
+        gfx.draw_point(x, y + i, color_y);
+    }
+}
+
+func calculate_distance(x1, y1, x2, y2) {
+    let dx = x2 - x1;
+    let dy = y2 - y1;
+    let dist = dx + dy;
+    return dist;
+}
+
+func clamp_coordinate(value, min_val, max_val) {
+    let result = value;
+    
+    if value < min_val {
+        result = min_val;
+    } else {
+        if value > max_val {
+            result = max_val;
+        }
+    }
+    
+    return result;
+}
+
+func wrap_coordinate(value, max_val) {
+    let result = value;
+    
+    if value >= max_val {
+        result = value - max_val;
+    } else {
+        if value < 0 {
+            result = value + max_val;
+        }
+    }
+    
+    return result;
+}

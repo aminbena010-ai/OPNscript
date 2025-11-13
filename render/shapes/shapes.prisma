@@ -1,0 +1,86 @@
+# Paquete OPN Render - Módulo Shapes
+# Funciones para dibujar formas geométricas básicas
+
+func draw_point_basic(x, y, color) {
+    gfx.draw_point(x, y, color);
+}
+
+func draw_circle_basic(x, y, radius, color) {
+    gfx.draw_circle(x, y, radius, color);
+}
+
+func draw_square_filled(x, y, size, color) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..size {
+        for col in 1..size {
+            gfx.draw_point(x + col, y + row, color);
+        }
+    }
+}
+
+func draw_rectangle_filled(x, y, width, height, color) {
+    let row = 0;
+    let col = 0;
+    
+    for row in 1..height {
+        for col in 1..width {
+            gfx.draw_point(x + col, y + row, color);
+        }
+    }
+}
+
+func draw_horizontal_line(x1, x2, y, color) {
+    let i = 0;
+    for i in 0..100 {
+        let px = x1 + i;
+        if px <= x2 {
+            gfx.draw_point(px, y, color);
+        }
+    }
+}
+
+func draw_vertical_line(x, y1, y2, color) {
+    let i = 0;
+    for i in 0..100 {
+        let py = y1 + i;
+        if py <= y2 {
+            gfx.draw_point(x, py, color);
+        }
+    }
+}
+
+func draw_circle_outline(x, y, radius, color) {
+    let i = 0;
+    for i in 1..8 {
+        gfx.draw_circle(x, y, radius, color);
+    }
+}
+
+func draw_grid_pattern(start_x, start_y, width, height, cell_size, color) {
+    let i = 0;
+    for i in 0..10 {
+        let x = start_x + i * cell_size;
+        let y = start_y + i * cell_size;
+        gfx.draw_point(x, y, color);
+    }
+}
+
+func draw_concentric_circles(x, y, num_circles, spacing, color) {
+    let i = 0;
+    for i in 1..num_circles {
+        let radius = i * spacing;
+        gfx.draw_circle(x, y, radius, color);
+    }
+}
+
+func draw_diamond(x, y, size, color) {
+    let i = 0;
+    for i in 1..size {
+        gfx.draw_point(x + i, y, color);
+        gfx.draw_point(x - i, y, color);
+        gfx.draw_point(x, y + i, color);
+        gfx.draw_point(x, y - i, color);
+    }
+}

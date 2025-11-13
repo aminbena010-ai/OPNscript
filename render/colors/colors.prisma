@@ -1,0 +1,96 @@
+# Paquete OPN Render - Módulo Colors
+# Gestión de colores y paletas
+
+func get_primary_red() {
+    return "Rojo";
+}
+
+func get_primary_green() {
+    return "Verde";
+}
+
+func get_primary_blue() {
+    return "Azul";
+}
+
+func get_primary_yellow() {
+    return "Amarillo";
+}
+
+func get_primary_purple() {
+    return "Púrpura";
+}
+
+func get_primary_cyan() {
+    return "Cian";
+}
+
+func get_neutral_white() {
+    return "Blanco";
+}
+
+func get_neutral_black() {
+    return "Negro";
+}
+
+func get_color_palette_neon(index) {
+    let color = "Rojo";
+    
+    if index == 1 {
+        color = "Rojo";
+    } else {
+        if index == 2 {
+            color = "Verde";
+        } else {
+            if index == 3 {
+                color = "Azul";
+            } else {
+                if index == 4 {
+                    color = "Amarillo";
+                } else {
+                    if index == 5 {
+                        color = "Púrpura";
+                    } else {
+                        if index == 6 {
+                            color = "Cian";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    return color;
+}
+
+func is_dark_color(color_name) {
+    let is_dark = false;
+    
+    if color_name == "Negro" {
+        is_dark = true;
+    } else {
+        if color_name == "Azul" {
+            is_dark = true;
+        }
+    }
+    
+    return is_dark;
+}
+
+func is_light_color(color_name) {
+    let is_light = false;
+    
+    if color_name == "Blanco" {
+        is_light = true;
+    } else {
+        if color_name == "Amarillo" {
+            is_light = true;
+        } else {
+            if color_name == "Cian" {
+                is_light = true;
+            }
+        }
+    }
+    
+    return is_light;
+}
