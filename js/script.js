@@ -46,13 +46,27 @@ function initNavigation() {
         });
     });
     
+    // Permite cargar una sección desde el hash de la URL al cargar la página
     window.addEventListener('hashchange', function() {
         const hash = window.location.hash.slice(1);
         if (hash) {
             const link = document.querySelector(`[data-section="${hash}"]`);
             if (link) link.click();
+            else { // Para secciones ocultas sin link
+                const section = document.getElementById(hash);
+                if (section && section.classList.contains('content-section')) {
+                    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+                    section.classList.add('active');
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                }
+            }
         }
     });
+    
+    // Dispara el evento hashchange en la carga inicial
+    if (window.location.hash) {
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
+    }
 }
 
 function addScrollAnimations() {
