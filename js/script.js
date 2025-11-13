@@ -40,7 +40,7 @@ function initNavigation() {
             const targetSection = document.getElementById(sectionId);
             if (targetSection) {
                 targetSection.classList.add('active');
-                window.scrollTo(0, 0);
+                document.getElementById('main-content').scrollTo(0, 0);
             }
         });
     });
@@ -56,20 +56,21 @@ function initNavigation() {
 
 function addScrollAnimations() {
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px'
     };
     
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeIn 0.5s ease forwards';
+                entry.target.classList.add('is-visible');
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
     
-    document.querySelectorAll('.feature-card, .code-block, table').forEach(el => {
+    document.querySelectorAll('.content-section h1, .content-section h2, .content-section h3, .content-section p, .content-section ul, .content-section ol, .feature-card, .code-block, .reference-table, .colors-grid, .info-box, .warning-box, .contact-button, .giscus-container').forEach(el => {
+        el.classList.add('animate-on-scroll');
         observer.observe(el);
     });
 }

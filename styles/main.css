@@ -257,14 +257,18 @@ body {
 .nav-link:hover {
     background-color: rgba(99, 102, 241, 0.1);
     color: var(--primary);
-    padding-left: 16px;
+    transform: translateX(4px);
+}
+
+.nav-link.active, .nav-link.active:hover {
+    transform: translateX(0);
+    padding-left: 12px;
 }
 
 .nav-link.active {
     background-color: rgba(99, 102, 241, 0.15);
     color: var(--primary);
     border-left-color: var(--primary);
-    padding-left: 16px;
 }
 
 .nav-link svg {
@@ -289,22 +293,21 @@ body {
 
 .content-section {
     display: none;
-    animation: fadeIn 0.3s ease;
 }
 
 .content-section.active {
     display: block;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hero-section {
@@ -753,4 +756,38 @@ strong {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.contact-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.contact-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.giscus-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.giscus {
+    width: 100%;
 }
