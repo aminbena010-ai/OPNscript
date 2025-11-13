@@ -85,7 +85,7 @@
                     <h3 class="nav-title">Referencia</h3>
                     <ul>
                         <li><a href="#variables" class="nav-link" data-section="variables"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> Variables</a></li>
-                        <li><a href="#stdlib" class="nav-link" data-section="stdlib"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Librería Estándar</a></li>
+                        <li><a href="#api-reference" class="nav-link" data-section="api-reference"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Referencia de API</a></li>
                     </ul>
                 </div>
 
@@ -1427,129 +1427,106 @@ let falso = false;
                 </ul>
             </section>
 
-            <!-- STDLIB -->
-            <section id="stdlib" class="content-section">
-                <h1><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Librería Estándar</h1>
+            <!-- API REFERENCE -->
+            <section id="api-reference" class="content-section">
+                <h1><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Referencia de API</h1>
 
                 <p>OPN incluye una librería estándar expuesta a través de varios espacios de nombres (namespaces). Cada namespace refleja un ecosistema familiar, permitiéndote reutilizar hábitos de otros lenguajes mientras mantienes la sintaxis clara.</p>
 
-                <h2>Módulo py (Python)</h2>
+                <h2>Módulo `py` (Python)</h2>
+                <p>Funciones que imitan el comportamiento de funciones comunes de Python.</p>
+                
+                <h3 id="py-print">py.print(...valores)</h3>
+                <p>Imprime uno o más valores en la consola, separados por espacios. Es un envoltorio directo de la función `print` de Python.</p>
+                <h4>Parámetros:</h4>
+                <ul><li>`...valores`: Uno o más valores de cualquier tipo para imprimir.</li></ul>
+                <h4>Ejemplo:</h4>
+                <div class="code-block"><code>py.print("El resultado es:", 42, "y está activo:", true);</code></div>
 
-                <h3>py.print(...valores)</h3>
-                <p>Imprime uno o más valores en la consola. Envuelve la función <code>print</code> de Python.</p>
-                <div class="code-block">
-                    <code>
-py.print("Hola");<br>
-py.print("Resultado:", 42);<br>
-py.print(1, 2, 3);
-                    </code>
-                </div>
+                <h3 id="py-input">py.input(prompt)</h3>
+                <p>Muestra un `prompt` al usuario en la consola y espera a que introduzca una línea de texto, que es devuelta como un string.</p>
+                <h4>Parámetros:</h4>
+                <ul><li>`prompt` (string): El mensaje que se mostrará al usuario.</li></ul>
+                <h4>Ejemplo:</h4>
+                <div class="code-block"><code>let nombre = py.input("Introduce tu nombre: ");<br>py.print("Hola,", nombre);</code></div>
 
-                <h3>py.input(prompt)</h3>
-                <p>Muestra un prompt y lee una línea de texto desde la consola.</p>
-                <div class="code-block">
-                    <code>
-let nombre = py.input("¿Cómo te llamas? ");<br>
-py.print("Hola,", nombre);
-                    </code>
-                </div>
+                <h3 id="py-random-randint">py.random.randint(a, b)</h3>
+                <p>Devuelve un número entero aleatorio dentro del rango `[a, b]`, incluyendo ambos extremos.</p>
+                <h4>Parámetros:</h4>
+                <ul>
+                    <li>`a` (int): Límite inferior del rango.</li>
+                    <li>`b` (int): Límite superior del rango.</li>
+                </ul>
+                <h4>Ejemplo:</h4>
+                <div class="code-block"><code>let dado = py.random.randint(1, 6);<br>py.print("Has sacado un:", dado);</code></div>
 
-                <h3>py.random.randint(a, b)</h3>
-                <p>Devuelve un número entero aleatorio entre a y b (ambos incluidos).</p>
-                <div class="code-block">
-                    <code>
-let numero = py.random.randint(1, 100);<br>
-py.print("Número aleatorio:", numero);
-                    </code>
-                </div>
+                <h2>Módulo `gfx` (Gráficos)</h2>
+                <p>Funciones para crear y manipular gráficos 2D. Consulta la sección <a href="#gfx-api" class="nav-link" data-section="gfx-api">API de Gráficos</a> para más detalles.</p>
+                
+                <h3 id="gfx-setup_canvas">gfx.setup_canvas(width, height, title)</h3>
+                <p>Inicializa la ventana y el lienzo de dibujo.</p>
 
-                <h2>Módulo c (Estilo C)</h2>
+                <h3 id="gfx-draw_circle">gfx.draw_circle(x, y, radius, color)</h3>
+                <p>Dibuja un círculo relleno.</p>
 
-                <h3>c.printf(formato, ...valores)</h3>
-                <p>Imprime texto con formato usando placeholders estilo printf. Se transpila a formateo de strings de Python.</p>
-                <div class="code-block">
-                    <code>
-c.printf("Hola %s, tienes %d años", "Juan", 25);
-                    </code>
-                </div>
+                <h3 id="gfx-draw_point">gfx.draw_point(x, y, color)</h3>
+                <p>Dibuja un punto.</p>
 
-                <h2>Módulo cpp (Estilo C++)</h2>
+                <h3 id="gfx-update_screen">gfx.update_screen()</h3>
+                <p>Refresca la pantalla para mostrar los dibujos.</p>
 
-                <h3>cpp.cout(valor)</h3>
-                <p>Imprime un valor seguido de una nueva línea, similar a <code>std::cout</code>.</p>
-                <div class="code-block">
-                    <code>
-cpp.cout("Hola desde C++");
-                    </code>
-                </div>
+                <h3 id="gfx-get_random_color">gfx.get_random_color()</h3>
+                <p>Devuelve un nombre de color aleatorio de la paleta.</p>
 
-                <h2>Módulo cs (Estilo C#)</h2>
+                <h2>Funciones Globales de Utilidad</h2>
+                <p>Funciones disponibles globalmente para conversiones y utilidades comunes.</p>
 
-                <h3>cs.write_line(valor)</h3>
-                <p>Imprime un valor seguido de una nueva línea, similar a <code>Console.WriteLine</code>.</p>
-                <div class="code-block">
-                    <code>
-cs.write_line("Hola desde C#");
-                    </code>
-                </div>
+                <h3 id="to_string">to_string(valor)</h3>
+                <p>Convierte cualquier valor a su representación en formato de cadena de texto (string).</p>
+                <h4>Parámetros:</h4>
+                <ul><li>`valor`: El valor a convertir.</li></ul>
+                <h4>Ejemplo:</h4>
+                <div class="code-block"><code>let numero = 123;<br>let texto = to_string(numero); // texto es "123"</code></div>
 
-                <h2>Módulo js (Estilo JavaScript)</h2>
+                <h3 id="to_number">to_number(valor)</h3>
+                <p>Intenta convertir una cadena de texto a un número (entero o de punto flotante). Si la conversión falla, puede devolver un error o un valor nulo.</p>
+                <h4>Parámetros:</h4>
+                <ul><li>`valor` (string): La cadena de texto a convertir.</li></ul>
+                <h4>Ejemplo:</h4>
+                <div class="code-block"><code>let numero = to_number("99.5");<br>py.print(numero + 0.5); // Imprime 100.0</code></div>
 
-                <h3>js.log(valor)</h3>
-                <p>Imprime un mensaje de diagnóstico, similar a <code>console.log</code>.</p>
-                <div class="code-block">
-                    <code>
-js.log("Debug: valor importante");
-                    </code>
-                </div>
+                <h3 id="range">range(inicio, fin)</h3>
+                <p>Genera una secuencia de números para ser utilizada en bucles `for`. El rango va desde `inicio` hasta `fin - 1`.</p>
+                <h4>Parámetros:</h4>
+                <ul>
+                    <li>`inicio` (int): El primer número de la secuencia.</li>
+                    <li>`fin` (int): El bucle se detiene antes de alcanzar este número.</li>
+                </ul>
+                <h4>Ejemplo:</h4>
+                <div class="code-block"><code>for i in range(0, 3) {<br>&nbsp;&nbsp;py.print(i); // Imprime 0, 1, 2<br>}</code></div>
 
-                <h2>Módulo css (Estilo CSS)</h2>
+                <h2>Módulos de Estilo Alternativo</h2>
+                <p>Estos módulos ofrecen funciones de impresión con una sintaxis familiar para programadores de otros lenguajes.</p>
 
-                <h3>css.set(selector, propiedad, valor)</h3>
-                <p>Define una regla de estilo CSS. Registra la regla y imprime confirmación.</p>
-                <div class="code-block">
-                    <code>
-css.set("body", "background-color", "blue");<br>
-css.set(".container", "width", "800px");
-                    </code>
-                </div>
+                <h3 id="c-printf">c.printf(formato, ...valores)</h3>
+                <p>Imprime texto con formato, similar a la función `printf` de C.</p>
+                <h4>Ejemplo:</h4>
+                <div class="code-block"><code>c.printf("Usuario: %s, Puntuación: %d", "Alex", 100);</code></div>
 
-                <h2>Módulo gfx (Gráficos)</h2>
-                <p>Ver la sección <strong>API de Gráficos</strong> para documentación completa del módulo gfx.</p>
+                <h3 id="cpp-cout">cpp.cout(valor)</h3>
+                <p>Imprime un valor seguido de un salto de línea, imitando a `std::cout` de C++.</p>
+                <h4>Ejemplo:</h4>
+                <div class="code-block"><code>cpp.cout("Mensaje desde C++.");</code></div>
 
-                <h2>Funciones de Utilidad</h2>
+                <h3 id="cs-write_line">cs.write_line(valor)</h3>
+                <p>Imprime un valor seguido de un salto de línea, similar a `Console.WriteLine` de C#.</p>
+                <h4>Ejemplo:</h4>
+                <div class="code-block"><code>cs.write_line("Mensaje desde C#.");</code></div>
 
-                <h3>to_string(valor)</h3>
-                <p>Convierte cualquier valor a una cadena de texto.</p>
-                <div class="code-block">
-                    <code>
-let numero = 42;<br>
-let texto = to_string(numero);<br>
-py.print(texto);
-                    </code>
-                </div>
-
-                <h3>to_number(valor)</h3>
-                <p>Intenta convertir una cadena de texto a un número (entero o flotante).</p>
-                <div class="code-block">
-                    <code>
-let numero = to_number("42");<br>
-py.print(numero);<br>
-<br>
-let decimal = to_number("3.14");<br>
-py.print(decimal);
-                    </code>
-                </div>
-
-                <h3>range(start, end)</h3>
-                <p>Devuelve un rango para usar en bucles for.</p>
-                <div class="code-block">
-                    <code>
-for i in range(1, 10) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;py.print(i);<br>
-}
-                    </code>
-                </div>
+                <h3 id="js-log">js.log(valor)</h3>
+                <p>Imprime un mensaje en la consola, ideal para depuración, al estilo de `console.log` de JavaScript.</p>
+                <h4>Ejemplo:</h4>
+                <div class="code-block"><code>js.log("Valor de la variable x:", miVariable);</code></div>
 
                 <div class="info-box">
                     <div class="box-icon">

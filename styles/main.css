@@ -212,6 +212,12 @@ body {
     margin-top: 4px;
 }
 
+.search-result-title mark {
+    background-color: var(--tertiary);
+    color: var(--bg-darker);
+    padding: 1px 2px;
+    border-radius: 3px;
+}
 .sidebar-nav {
     flex: 1;
     overflow-y: auto;
@@ -365,6 +371,16 @@ body {
 body.no-animations .animate-on-scroll {
     opacity: 1;
     transform: none;
+}
+
+@keyframes highlight-flash {
+    0% { background-color: rgba(245, 158, 11, 0); }
+    25% { background-color: rgba(245, 158, 11, 0.3); }
+    100% { background-color: rgba(245, 158, 11, 0); }
+}
+
+.highlight-search {
+    animation: highlight-flash 2.5s ease-out;
 }
 
 .hero-section {
