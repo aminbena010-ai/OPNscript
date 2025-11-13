@@ -171,8 +171,8 @@ main {<br>
 
                 <p><strong>Ejecuta el programa:</strong></p>
                 <div class="code-block">
-                    <code>cd OPN4/prisma-lang/src<br>
-python -m prisma run hola.opn</code>
+                    <code>cd OPNscript<br>
+python -m src.prisma run hola.opn</code>
                 </div>
 
                 <p><strong>Salida esperada:</strong></p>
@@ -341,18 +341,14 @@ main {<br>
 
                 <h3>Paso 1: Descargar el Repositorio</h3>
                 <div class="code-block">
-                    <code>git clone https://github.com/tu-usuario/opn.git<br>
-cd opn</code>
+                    <code>git clone https://github.com/aminbena010-ai/OPNscript.git<br>
+cd OPNscript</code>
                 </div>
 
-                <h3>Paso 2: Navegar al Directorio</h3>
+                <h3>Paso 2: Ejecutar OPN</h3>
+                <p>Puedes iniciar el REPL (la consola interactiva) directamente desde la carpeta raíz del proyecto.</p>
                 <div class="code-block">
-                    <code>cd OPN4/prisma-lang/src</code>
-                </div>
-
-                <h3>Paso 3: Ejecutar OPN</h3>
-                <div class="code-block">
-                    <code>python -m prisma</code>
+                    <code>python -m src.prisma</code>
                 </div>
 
                 <h2>Verificación de Instalación</h2>
@@ -361,8 +357,7 @@ cd opn</code>
                 <ol>
                     <li>Inicia el REPL:
                         <div class="code-block">
-                            <code>cd OPN4/prisma-lang/src<br>
-python -m prisma</code>
+                            <code>python -m src.prisma</code>
                         </div>
                     </li>
                     <li>Deberías ver:
@@ -393,8 +388,8 @@ opn> gfx.update_screen();</code>
                 <h3>Error: "No module named 'prisma'"</h3>
                 <p><strong>Solución:</strong> Asegúrate de estar en el directorio correcto:</p>
                 <div class="code-block">
-                    <code>cd OPN4/prisma-lang/src<br>
-python -m prisma</code>
+                    <code>cd OPNscript<br>
+python -m src.prisma</code>
                 </div>
 
                 <h3>Error: "No module named 'tkinter'"</h3>
@@ -1587,6 +1582,24 @@ for i in range(1, 10) {<br>
             </section>
 
         </main>
+    </div>
+
+    <!-- RATING MODAL -->
+    <div id="rating-modal" class="rating-modal">
+        <div class="rating-modal-content">
+            <button id="close-rating-modal" class="close-btn">&times;</button>
+            <h3>¡Valora OPN!</h3>
+            <p>Tu opinión es importante para mejorar el lenguaje. ¿Qué puntuación le darías?</p>
+            <div id="rating-stars" class="rating-stars">
+                <span data-value="1">☆</span>
+                <span data-value="2">☆</span>
+                <span data-value="3">☆</span>
+                <span data-value="4">☆</span>
+                <span data-value="5">☆</span>
+            </div>
+            <p id="rating-feedback" class="rating-feedback"></p>
+            <button id="submit-rating" class="submit-rating-btn" disabled>Enviar Valoración</button>
+        </div>
     </div>
 
     <button id="back-to-top" class="back-to-top-btn" title="Volver arriba">

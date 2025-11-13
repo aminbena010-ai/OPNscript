@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     addScrollAnimations();
     initCopyButtons();
     initBackToTopButton();
+    initRatingModal();
 });
 
 function initTheme() {
@@ -159,5 +160,67 @@ function initBackToTopButton() {
 
     backToTopButton.addEventListener('click', () => {
         mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+function initRatingModal() {
+    const modal = document.getElementById('rating-modal');
+    const closeModalBtn = document.getElementById('close-rating-modal');
+    const stars = document.querySelectorAll('.rating-stars span');
+    const feedback = document.getElementById('rating-feedback');
+    const submitBtn = document.getElementById('submit-rating');
+
+    if (!modal) return;
+
+    let currentRating = 0;
+    const feedbackMessages = [
+        "Necesita mejorar",
+        "Podría ser mejor",
+        "Está bien",
+        "¡Buen trabajo!",
+        "¡Excelente!"
+    ];
+
+    // Mostrar modal después de 15 segundos, solo si no se ha mostrado antes en la sesión
+    if (!sessionStorage.getItem('ratingModalShown')) {
+        setTimeout(() => {
+            modal.classList.add('visible');
+            sessionStorage.setItem('ratingModalShown', 'true');
+        }, 15000);
+    }
+
+    closeModalBtn.addEventListener('click', () => {
+        modal.classList.remove('visible');
+    });
+
+    stars.forEach(star => {
+        star.addEventListener('mouseover', () => {
+            stars.forEach(s => s.textContent = '☆');
+            for (let i = 0; i < star.dataset.value; i++) {
+                stars[i].textContent = '★';
+            }
+        });
+
+        star.addEventListener('mouseout', () => {
+            stars.forEach(s => s.textContent = '☆');
+            for (let i = 0; i < currentRating; i++) {
+                stars[i].textContent = '★';
+            }
+        });
+
+        star.addEventListener('click', () => {
+            currentRating = star.dataset.value;
+            feedback.textContent = feedbackMessages[currentRating - 1];
+            submitBtn.disabled = false;
+        });
+    });
+
+    submitBtn.addEventListener('click', () => {
+        if (currentRating > 0) {
+            const subject = `Valoración para OPN: ${currentRating}/5 estrellas`;
+            const body = `Hola,\n\nMi valoración para el lenguaje OPN es de ${currentRating} de 5 estrellas.\n\nFeedback adicional:\n`;
+            window.open(`mailto:amin.bena010@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+            modal.classList.remove('visible');
+        }
     });
 }
