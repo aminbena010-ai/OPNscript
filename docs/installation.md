@@ -335,4 +335,4 @@ Ahora que tienes OPN instalado:
 **Relacionado**:
 - [Primeros Pasos →](getting_started.md)
 - [API de Gráficos →](gfx_api.md)
-- [← Volver al Índice](README.md)
+- [← Volver al Índice](../README.md)
